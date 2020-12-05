@@ -9,6 +9,7 @@ class TechniquesController < ApplicationController
   end
 
   def create
+
   end
 
   def edit
