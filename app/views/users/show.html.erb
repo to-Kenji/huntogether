@@ -1,5 +1,5 @@
-
-
+<div class="container">
+  <h1>マイページ</h1>
   <table class="table table-bordered">
     <tr>
       <th>ユーザー名</th>
@@ -12,4 +12,6 @@
       <th><%= simple_format(@user.profile) %></th>
     </tr>
   </table>
-<%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-info' %>
+  <%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-info' %>
+</div>
+
