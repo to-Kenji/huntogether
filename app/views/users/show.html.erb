@@ -1,0 +1,15 @@
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>自己紹介文</th>
+    </tr>
+    <tr>
+      <th><%= @user.name %></th>
+      <th><%= @user.email %></th>
+      <th><%= simple_format(@user.profile) %></th>
+    </tr>
+  </table>
+<%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-info' %>
