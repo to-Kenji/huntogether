@@ -1,2 +1,32 @@
-<h1>Techniques#new</h1>
-<p>Find me in app/views/techniques/new.html.erb</p>
+<h2 style="text-align: center">モンスター別対策・小技投稿</h2>
+<div class="card text-center">
+  <div class="card-body">
+    <%= form_with(model: @technique, local: true) do |f| %>
+      <%= render 'layouts/shared/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.text_field :title, :placeholder => 'タイトル', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :monster_id, '対象モンスター：' %>
+        <%= f.collection_select :monster_id, Monster.all, :id, :name, :prompt => true ,class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :weapon_id, '使用武器：' %>
+        <%= f.collection_select :weapon_id, Weapon.all, :id, :name, :prompt => true ,class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :body, :placeholder => '本文はこちらに', :rows => 10, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :youtube_url, 'YouTubeの共有リンクを貼り付けてください：' %>
+        <%= f.text_field :youtube_url, class: 'form-control-sm' %>
+      </div>
+
+      <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

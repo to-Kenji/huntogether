@@ -1,2 +1,16 @@
-<h1>Techniques#show</h1>
-<p>Find me in app/views/techniques/show.html.erb</p>
+<h4>モンスター別対策・小技</h4>
+<div class="card text-center">
+  <div class="card-header"><h2><%= @technique.title %></h2></div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">対象モンスター：<%= @technique.monster.name %></li>
+      <li class="list-group-item">使用武器：<%= @technique.weapon.name %></li>
+      <li class="list-group-item"><%= simple_format(@technique.body) %></li>
+      <% if @technique.youtube_url? %>
+        <li class="list-group-item">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
