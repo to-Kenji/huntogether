@@ -9,8 +9,10 @@
       <% if @technique.youtube_url? %>
         <li class="list-group-item">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </li>
       <% end %>
-      </li>
     </ul>
+    <%= render 'likes/like_button', technique: @technique %>
+    <%= @technique.likes.count %>
   </div>
 </div>
