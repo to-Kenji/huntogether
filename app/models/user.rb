@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :techniques
 
   has_many :likes, dependent: :destroy
-  has_many :liked_techniques, through: :likes, source: :technique
+ 
 
   def do_like(other_technique)
     self.likes.find_or_create_by(technique_id: other_technique.id)

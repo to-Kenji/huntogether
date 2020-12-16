@@ -1,18 +1,19 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_technique
+  respond_to :html, :js
   def create
-    technique = Technique.find(params[:technique_id])
-    current_user.do_like(technique)
-    flash[:notice] = 'いいねした'
-    redirect_to technique
+    Like.create(user_id: current_user.id, technique_id: params[:id])
   end
 
   def destroy
-    technique = Technique.find(params[:technique_id])
-    current_user.do_unlike(technique)
-    flash[:notice] = 'いいね解除'
-    redirect_to technique
+    like = Like.find_by(user_id: current_user.id, technique_id: params[:id])
+    like.destroy
+  end
+
+  private
+  def set_technique
+    @technique = Technique.find(params[:id])
   end
 
 end

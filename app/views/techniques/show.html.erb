@@ -12,7 +12,8 @@
         </li>
       <% end %>
     </ul>
-    <%= render 'likes/like_button', technique: @technique %>
-    <%= @technique.likes.count %>
+    <div id="technique_<%=@technique.id %>">
+      <%= render 'technique', technique: @technique %>
+    </div>
   </div>
 </div>

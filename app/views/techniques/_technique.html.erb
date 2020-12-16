@@ -1,0 +1,10 @@
+<% if current_user.already_liked?(technique) %>
+  <%= link_to destroy_like_path(technique), method: :DELETE, remote: true do %>
+    <i class="fa fa-heart unlike-btn"></i>
+  <% end %>
+<% else %>
+  <%= link_to create_like_path(technique), method: :POST, remote: true do %>
+    <i class="fa fa-heart like-btn"></i>
+  <% end %>
+<% end %>
+<%= technique.likes.count %>
