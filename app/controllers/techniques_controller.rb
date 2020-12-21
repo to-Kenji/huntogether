@@ -6,6 +6,7 @@ class TechniquesController < ApplicationController
   def show
     @technique = Technique.find(params[:id])
     @like = Like.new
+    @user = @technique.user
   end
 
   def new
