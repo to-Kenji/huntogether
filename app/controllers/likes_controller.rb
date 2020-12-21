@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technique
-  respond_to :html, :js
+
   def create
     Like.create(user_id: current_user.id, technique_id: params[:id])
   end

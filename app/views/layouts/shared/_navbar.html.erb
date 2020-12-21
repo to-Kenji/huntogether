@@ -1,15 +1,44 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" href="/">HunTogether</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <div class="nav-item"><a href="#">タブ色々</a></div>
-          <li class="nav-item"><%= link_to 'マイページ', user_path(id: current_user.id), class: 'nav-link' %></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              ハンター養成所 <i class="fas fa-school"></i>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to '小技を投稿する', new_technique_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to '小技を調べる', techniques_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              救難信号 <i class="fas fa-hands-helping"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">信号を出す(募集)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">信号に参加(探す)</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'%>
+            </div>
+          </li>
+          
         <% else %>
           <li class="nav-item"><%= link_to 'ユーザー登録', new_user_registration_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
