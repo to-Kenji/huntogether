@@ -1,6 +1,7 @@
 class TechniquesController < ApplicationController
   before_action :authenticate_user!
   def index
+    @techniques = Technique.all.order(id: "DESC").page(params[:page]).per(4)
   end
 
   def show

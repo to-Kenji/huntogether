@@ -1,2 +1,23 @@
-<h1>Techniques#index</h1>
-<p>Find me in app/views/techniques/index.html.erb</p>
+<h1>ハンター養成所</h1>
+
+<div class="row">
+  <% @techniques.each do |technique| %>
+    <div class="card w-25">
+        <div class="card-header text-center">
+          <strong>
+            <%= link_to technique_path(technique) do %>
+              <%= technique.title %>
+            <% end %>
+          </strong>
+          <% if technique.youtube_url? %>
+            <i class="fab fa-youtube"></i>
+          <% end %>
+        </div>
+        <div class="card-body">
+          使用武器：<%= technique.weapon.name %><br />
+          対象モンスター：<%= technique.monster.name %>
+        </div>
+    </div>
+  <% end %>
+  <%= paginate @techniques %>
+</div>

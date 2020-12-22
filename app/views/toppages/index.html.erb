@@ -5,7 +5,10 @@
       既存の攻略サイトとは違う、<br/>
       熟練ハンター達が集い、その技を共有し、高め合う場所
     </h3>
-    <p>二つのサービスが提供されます</p>
+    <div class="button mt-3">
+        <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary mr-4" %>
+        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 <div class="row justify-content-around">
@@ -20,7 +23,11 @@
         「ハンター養成所」では、モンスターや武器毎に、熟練ハンター達が持つ「技」が公開されています。<br/>
         ここはプレイヤーのスキルを高める言わば「学びの場」です。<br/>
         学ぶだけでなく、自分の得た技を他のハンター達に共有することもできます。
-        <p class="text-center"><%= link_to '養成所へ向かう', techniques_path, class: 'btn btn-info'%></p>
+        <div class="text-center">
+          <%= link_to '養成所へ向かう', techniques_path, class: 'btn btn-info'%>
+          <p>（ログインが必要です）</p>
+        </div>
+       
       </p>
     </div>
   </div>
@@ -34,7 +41,10 @@
         困ったときは是非活用してください。<br/>
         助けを求めるも良し、熟練ハンター同士で集まるも良し、<br/>
         楽しくワイワイ集まって交流するのも良いでしょう。<br/>
-        <p class="text-center"><a class="btn btn-info" href="#">救難信号を出す</a></p>
+        <div class="text-center">
+          <a class="btn btn-info" href="#">救難信号を出す</a>
+        <p>（ログインが必要です）</p>
+        </div>
       </p>
     </div>
   </div> 
