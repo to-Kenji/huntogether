@@ -1,11 +1,11 @@
 class TechniquesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_technique, only: [:show, :edit, :update, :destroy]
   def index
     @techniques = Technique.all.order(id: "DESC").page(params[:page]).per(4)
   end
 
   def show
-    @technique = Technique.find(params[:id])
     @like = Like.new
     @user = @technique.user
   end
@@ -20,7 +20,7 @@ class TechniquesController < ApplicationController
     @technique.youtube_url = url
     if @technique.save
       flash[:notice] = '投稿しました！'
-      redirect_to technique_path(@technique)
+      redirect_to @technique
     else
       flash.now[:error] = '投稿に失敗しました！'
       render :new
@@ -31,14 +31,28 @@ class TechniquesController < ApplicationController
   end
 
   def update
+    if @technique.update(technique_params)
+      flash[:notice] = '更新しました。'
+      redirect_to @technique
+    else
+      flash.now[:error] = '更新に失敗しました。'
+      render :edit
+    end
   end
 
   def destroy
+    @technique.destroy
+    flash[:notice] = '投稿を削除しました。'
+    redirect_to techniques_path
   end
 
   private
 
   def technique_params
     params.require(:technique).permit(:title, :body, :youtube_url, :weapon_id, :monster_id)
+  end
+
+  def set_technique
+    @technique = Technique.find(params[:id])
   end
 end

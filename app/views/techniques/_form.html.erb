@@ -1,0 +1,37 @@
+<h2 style="text-align: center">モンスター別対策・小技投稿</h2>
+<div class="card text-center">
+  <div class="card-body">
+    <%= form_with(model: @technique, local: true) do |f| %>
+      <%= render 'layouts/shared/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.text_field :title, :placeholder => 'タイトル(例：対イヴェルカーナでの各種ブレスの対応方法)', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :monster_id, '対象モンスター：' %>
+        <%= f.collection_select :monster_id, Monster.all, :id, :name, :prompt => true ,class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :weapon_id, '使用武器：' %>
+        <%= f.collection_select :weapon_id, Weapon.all, :id, :name, :prompt => true ,class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :body, :placeholder => '本文はこちらに(例：基本ジャンプで急襲突きを合わせる)', :rows => 10, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :youtube_url, 'YouTubeの共有リンクを貼り付けてください：' %>
+        <%= f.text_field :youtube_url, class: 'form-control-sm' %>
+      </div>
+
+      <% if controller.action_name == 'edit' %>
+        <%= f.submit '更新', class: 'btn btn-success btn-lg mr-4' %>
+        <%= link_to '投稿を削除する', @technique, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: '本当に削除してよろしいですか？' } %>
+      <% else %>
+        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
