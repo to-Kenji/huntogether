@@ -1,22 +1,21 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand" href="/">HunTogether</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <% if user_signed_in? %>
+      <%= link_to 'HunTogether', techniques_path, class: 'navbar-brand' %>
+    <% else %>
+      <a class="navbar-brand" href="/">HunTogether</a>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+          <li class="nav-item">
+            <%= link_to techniques_path, class: 'nav-link' do %>
               ハンター養成所 <i class="fas fa-school"></i>
-            </a>
-            <div class="dropdown-menu">
-              <%= link_to '投稿する', new_technique_path, class: 'dropdown-item'  %>
-              <div class="dropdown-divider"></div>
-              <%= link_to '学ぶ', techniques_path, class: 'dropdown-item' %>
-            </div>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">

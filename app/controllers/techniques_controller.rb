@@ -2,12 +2,18 @@ class TechniquesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technique, only: [:show, :edit, :update, :destroy]
   def index
-    @techniques = Technique.all.order(id: "DESC").page(params[:page]).per(4)
+    @techniques = Technique.all.order(id: "DESC").page(params[:page]).per(8)
+
+    if @q = Technique.ransack(params[:q])
+      @techniques = @q.result.page(params[:page]).per(8)
+    end
   end
 
   def show
     @like = Like.new
     @user = @technique.user
+    @comment = Comment.new
+    @comments = @technique.comments.order(created_at: :desc)
   end
 
   def new
@@ -19,10 +25,10 @@ class TechniquesController < ApplicationController
     url = params[:technique][:youtube_url].last(11)
     @technique.youtube_url = url
     if @technique.save
-      flash[:notice] = '投稿しました！'
+      flash[:notice] = '投稿しました。'
       redirect_to @technique
     else
-      flash.now[:error] = '投稿に失敗しました！'
+      flash.now[:error] = '投稿に失敗しました。'
       render :new
     end
   end

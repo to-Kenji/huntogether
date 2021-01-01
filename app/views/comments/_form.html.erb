@@ -1,0 +1,6 @@
+<%= form_with(model: [technique, comment], remote: true) do |f| %>
+  <div class="field form-group">
+    <%= f.text_area :content, class: 'form-control', placeholder: 'コメントを入力' %>
+  </div>
+  <%= f.submit '投稿', class: 'btn btn-outline-dark' %>
+<% end %>

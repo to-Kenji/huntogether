@@ -1,4 +1,8 @@
-<h2 style="text-align: center">モンスター別対策・小技投稿</h2>
+<% if controller.action_name == 'edit' %>
+  <h2 style="text-align: center">編集</h2>
+<% else %>
+  <h2 style="text-align: center">新規投稿</h2>
+<% end %>
 <div class="card text-center">
   <div class="card-body">
     <%= form_with(model: @technique, local: true) do |f| %>
@@ -28,7 +32,7 @@
 
       <% if controller.action_name == 'edit' %>
         <%= f.submit '更新', class: 'btn btn-success btn-lg mr-4' %>
-        <%= link_to '投稿を削除する', @technique, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: '本当に削除してよろしいですか？' } %>
+        <%= link_to '削除', @technique, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: '削除します。よろしいですか?' } %>
       <% else %>
         <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
       <% end %>

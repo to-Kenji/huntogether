@@ -1,23 +1,50 @@
 <h1>ハンター養成所</h1>
 
-<div class="row">
-  <% @techniques.each do |technique| %>
-    <div class="card w-25">
-        <div class="card-header text-center">
-          <strong>
-            <%= link_to technique_path(technique) do %>
-              <%= technique.title %>
-            <% end %>
-          </strong>
-          <% if technique.youtube_url? %>
-            <i class="fab fa-youtube"></i>
+<div class="row justify-content-between">
+  <div class="menu col-md-4">
+    <aside>
+      <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
+      <div class="card text-center mt-2">
+        <strong class="mt-2">条件を指定して検索</strong>
+        <div class="search-form p-1">
+          <%= search_form_for @q do |f| %>
+            <%= f.label :weapon_id, '使用武器：' %>
+            <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし' %><br />
+
+            <%= f.label :monster_id, 'モンスター：' %>
+            <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし' %><br />
+
+            <%= f.submit '検索' %>
           <% end %>
         </div>
-        <div class="card-body">
-          使用武器：<%= technique.weapon.name %><br />
-          対象モンスター：<%= technique.monster.name %>
+      </div>
+    </aside>
+  </div>
+  <div class="techniques col-md-8">
+    <% if @techniques.empty? %>
+      <div class="text-center">
+        <p>投稿はありません</p>
+      </div>
+    <% else %>
+      <% @techniques.each do |technique| %>
+        <div class="card">
+            <div class="card-header text-center">
+              <strong>
+                <%= link_to technique_path(technique) do %>
+                  <%= technique.title %>
+                <% end %>
+              </strong>
+              <% if technique.youtube_url? %>
+                <i class="fab fa-youtube"></i>
+              <% end %>
+            </div>
+            <div class="card-body">
+              使用武器：<%= technique.weapon.name %><br />
+              対象モンスター：<%= technique.monster.name %>
+            </div>
         </div>
-    </div>
-  <% end %>
-  <%= paginate @techniques %>
+      <% end %>
+        <%= paginate @techniques %>
+    <% end %>
+  </div>
 </div>
