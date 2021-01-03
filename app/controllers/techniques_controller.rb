@@ -2,7 +2,7 @@ class TechniquesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technique, only: [:show, :edit, :update, :destroy]
   def index
-    @techniques = Technique.all.order(id: "DESC").page(params[:page]).per(8)
+    @techniques = Technique.all.page(params[:page]).per(8)
 
     if @q = Technique.ransack(params[:q])
       @techniques = @q.result.page(params[:page]).per(8)

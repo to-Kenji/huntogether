@@ -1,11 +1,27 @@
 <ul>
   <% comments.each do |comment| %>
     <li id=comment-<%= comment.id %>>
-      <%= link_to user_path(comment.user) do %>
-        <%= comment.user.name %>
-      <% end %>
-      <%= simple_format(comment.content) %>
-      <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
+      <div class="comment-header d-flex">
+        <div class="user">
+          <%= link_to user_path(comment.user) do %>
+          <% if comment.user.image %>
+            <%= image_tag comment.user.image.thumb40.url, class: 'icon' %>
+          <% else %>
+            <%= image_tag "/assets/default.png", class: 'default-icon' %>
+          <% end %>
+            <%= comment.user.name %>
+          <% end %>
+          <span class="ml-4"><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
+          <% if current_user.id == comment.user.id %>
+          <span class="trash-bottun">
+            <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
+          </span>
+        <% end %>
+        </div> 
+      </div>
+        <div class="comment-content mt-3">
+          <%= simple_format(comment.content) %>
+        </div>
     </li>
   <% end %>
 </ul>

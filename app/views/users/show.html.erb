@@ -1,18 +1,26 @@
-<div class="container">
-  <h1>マイページ</h1>
-
-  <table class="table table-bordered">
-    <tr>
-      <th>ユーザー名</th>
-      <th>メールアドレス</th>
-      <th>自己紹介文</th>
-    </tr>
-    <tr>
-      <th><%= @user.name %></th>
-      <th><%= @user.email %></th>
-      <th><%= simple_format(@user.profile) %></th>
-    </tr>
-  </table>
-  <%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-info' %>
+<div class="row">
+  <div class="image col-md-6 offset-md-3 text-center mb-3">
+  <% if @user.image? %>
+    <%= image_tag @user.image.thumb100.url, class: 'icon' %>
+  <% else %>
+    <%= image_tag "/assets/default.png", class: 'default-icon' %>
+  <% end %>
+  </div>
+  
+  <div class="card text-center col-md-6 offset-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h3 class="p-3"><%= @user.name %></h3>
+        <% if @user.id == current_user.id %>
+          <%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-sm btn-info' %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <%= simple_format(@user.profile) %>
+      </li>
+    </ul>
+  </div>
 </div>
+   
+  
 
