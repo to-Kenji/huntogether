@@ -31,10 +31,10 @@
       <li class="list-group-item">
             <div class="user-area">
               <%= link_to user_path(@user) do %>
-                <% if @user.image %>
+                <% if @user.image? %>
                   <%= image_tag @user.image.thumb40.url, class: 'icon' %>
                 <% else %>
-                  <%= image_tag "/assets/default.png", class: 'default-icon' %>
+                  <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
                 <% end %>
                 <%= @user.name %>
               <% end %>        

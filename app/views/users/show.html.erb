@@ -12,7 +12,7 @@
       <li class="list-group-item">
         <h3 class="p-3"><%= @user.name %></h3>
         <% if @user.id == current_user.id %>
-          <%= link_to 'ユーザー編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-sm btn-info' %>
+          <%= link_to '編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-sm btn-info' %>
         <% end %>
       </li>
       <li class="list-group-item">

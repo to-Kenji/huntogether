@@ -4,10 +4,10 @@
       <div class="comment-header d-flex">
         <div class="user">
           <%= link_to user_path(comment.user) do %>
-          <% if comment.user.image %>
+          <% if comment.user.image? %>
             <%= image_tag comment.user.image.thumb40.url, class: 'icon' %>
           <% else %>
-            <%= image_tag "/assets/default.png", class: 'default-icon' %>
+            <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
           <% end %>
             <%= comment.user.name %>
           <% end %>
