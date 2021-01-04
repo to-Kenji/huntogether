@@ -10,7 +10,6 @@ class TechniquesController < ApplicationController
   end
 
   def show
-    @like = Like.new
     @user = @technique.user
     @comment = Comment.new
     @comments = @technique.comments.order(created_at: :desc)
