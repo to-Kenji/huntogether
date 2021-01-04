@@ -42,17 +42,21 @@
             </div>
             <div class="card-body row">
               <div class="body col-md-6 offset-md-1 text-center">
-                <div class="weapon-monster">
+                <div class="content-area">
                   <div class="weapon mb-2">
                     武器：<strong><%= technique.weapon.name %></strong>
                   </div>
                   <div class="monster mb-2">
                     モンスター：<strong><%= technique.monster.name %></strong>
                   </div>
+
+                  <div class="difficulty mb-2">
+                    難易度：<strong><%= technique.difficulty %></strong>
+                  </div>
                 </div>
               </div>
               <div class="information col-md-4 text-center">
-                <div class="like-comment d-flex justify-content-center mb-2">
+                <div class="like-comment d-flex justify-content-center mb-3">
                   <div id="technique_<%= technique.id %>" class="mr-3">
                     <%= render 'technique', technique: technique %>
                   </div>

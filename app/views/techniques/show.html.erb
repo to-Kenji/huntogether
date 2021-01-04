@@ -16,10 +16,13 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="monster-area">
-          対象モンスター：<%= @technique.monster.name %>
+          対象モンスター：<strong><%= @technique.monster.name %></strong>
         </div>
         <div class="weapon-area">
-          使用武器：<%= @technique.weapon.name %>
+          使用武器：<strong><%= @technique.weapon.name %></strong>
+        </div>
+        <div class="difficulty-area">
+          難易度：<strong><%= @technique.difficulty %></strong>
         </div>
       </li>
       <li class="list-group-item"><%= simple_format(@technique.body) %></li>

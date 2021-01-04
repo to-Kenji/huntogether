@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_005853) do
+ActiveRecord::Schema.define(version: 2021_01_04_083818) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_03_005853) do
     t.bigint "monster_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "difficulty"
     t.index ["monster_id"], name: "index_techniques_on_monster_id"
     t.index ["user_id"], name: "index_techniques_on_user_id"
     t.index ["weapon_id"], name: "index_techniques_on_weapon_id"
