@@ -57,9 +57,11 @@
               </div>
               <div class="information col-md-4 text-center">
                 <div class="like-comment d-flex justify-content-center mb-3">
-                  <div id="technique_<%= technique.id %>" class="mr-3">
-                    <%= render 'technique', technique: technique %>
+                  <div class="like-count mr-3">
+                    <i class="fa fa-heart unlike-btn"></i>
+                    <%= technique.likes.count %>
                   </div>
+
                   <div class="comment-count">
                     <%= link_to technique_path(technique, anchor: 'comments-area') do %>
                       <i class="fas fa-comments"></i>
