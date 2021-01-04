@@ -1,7 +1,7 @@
 <h1>ハンター養成所</h1>
 
 <div class="row justify-content-between">
-  <div class="menu col-md-4">
+  <div class="menu col-md-5">
     <aside>
       <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
       <div class="card text-center mt-2">
@@ -20,27 +20,59 @@
       </div>
     </aside>
   </div>
-  <div class="techniques col-md-8">
+  <div class="techniques col-md-7">
     <% if @techniques.empty? %>
       <div class="text-center">
         <p>投稿はありません</p>
       </div>
     <% else %>
       <% @techniques.each do |technique| %>
-        <div class="card">
-            <div class="card-header text-center">
-              <strong>
-                <%= link_to technique_path(technique) do %>
-                  <%= technique.title %>
+        <div class="card mb-3">
+            <div class="card-header">
+              <div class="title-area text-center">
+                <strong>
+                  <%= link_to technique_path(technique) do %>
+                    <%= technique.title %>
+                  <% end %>
+                </strong>
+                <% if technique.youtube_url? %>
+                  <i class="fab fa-youtube"></i>
                 <% end %>
-              </strong>
-              <% if technique.youtube_url? %>
-                <i class="fab fa-youtube"></i>
-              <% end %>
+              </div>
             </div>
-            <div class="card-body">
-              使用武器：<%= technique.weapon.name %><br />
-              対象モンスター：<%= technique.monster.name %>
+            <div class="card-body row">
+              <div class="body col-md-6 offset-md-1 text-center">
+                <div class="weapon-monster">
+                  <div class="weapon mb-2">
+                    武器：<strong><%= technique.weapon.name %></strong>
+                  </div>
+                  <div class="monster mb-2">
+                    モンスター：<strong><%= technique.monster.name %></strong>
+                  </div>
+                </div>
+              </div>
+              <div class="information col-md-4 text-center">
+                <div class="like-comment d-flex justify-content-center mb-2">
+                  <div class="like-count mr-3">
+                    <i class="fa fa-heart like-btn"></i>
+                    <%= technique.likes.count %>
+                  </div>
+                  <div class="comment-count">
+                    <i class="fas fa-comments"></i>
+                    <%= technique.comments.count %>
+                  </div>
+                </div>
+                <div class="user-area">
+                  <%= link_to user_path(technique.user) do %>
+                    <% if technique.user.image? %>
+                      <%= image_tag technique.user.image.thumb40.url, class: 'icon' %>
+                    <% else %>
+                      <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+                    <% end %>
+                    <%= technique.user.name %>
+                  <% end %>
+                </div>
+              </div>
             </div>
         </div>
       <% end %>

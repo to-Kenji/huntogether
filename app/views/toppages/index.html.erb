@@ -6,8 +6,17 @@
       熟練ハンター達が集い、その技を共有し、高め合う場所
     </h3>
     <div class="button mt-3">
+      <% if user_signed_in? %>
+        <span>
+          <%= link_to user_path(current_user) do %>
+            <%= current_user.name %>
+          <% end %>
+        </span>
+        <span>さん、こんにちは！</span>
+      <% else %>
         <%= link_to '新規登録', new_user_registration_path, class: "btn btn-info mr-4" %>
         <%= link_to 'ログイン', new_user_session_path, class: "btn btn-info" %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -25,9 +34,7 @@
         学ぶだけでなく、自分の得た技を他のハンター達に共有することもできます。
         <div class="text-center">
           <%= link_to '養成所へ向かう', techniques_path, class: 'btn btn-info'%>
-          <p>（ログインが必要です）</p>
         </div>
-       
       </p>
     </div>
   </div>
@@ -37,13 +44,13 @@
     </div>
     <div class="card-body">
       <p>
-        「救難信号」では、一緒に狩りを手伝ってくれる仲間を募集できます。<br/>
+        「救難信号」では、一緒に狩りをする仲間を募集できます。<br/>
         困ったときは是非活用してください。<br/>
-        助けを求めるも良し、熟練ハンター同士で集まるも良し、<br/>
+        通常の救難信号とは違い、事前に情報交換した上で、<br/>
+        技術の高いメンバーを集めて狩りに出発しましょう。<br/>
         楽しくワイワイ集まって交流するのも良いでしょう。<br/>
         <div class="text-center">
           <a class="btn btn-info" href="#">救難信号を出す</a>
-        <p>（ログインが必要です）</p>
         </div>
       </p>
     </div>
