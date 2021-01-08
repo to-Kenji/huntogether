@@ -9,5 +9,7 @@ class Technique < ApplicationRecord
   validates :body, presence: true, length: { maximum: 255 }
   validates :difficulty, presence: true
   
-  default_scope -> { order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
+
+
 end

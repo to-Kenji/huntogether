@@ -5,16 +5,20 @@
     <aside>
       <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
       <div class="card text-center mt-2">
-        <strong class="mt-2">条件を指定して検索</strong>
+        <strong class="mt-2">条件を指定して絞り込む</strong>
         <div class="search-form p-1">
           <%= search_form_for @q do |f| %>
             <%= f.label :weapon_id, '使用武器：' %>
-            <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし' %><br />
+            <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし' %><br/>
 
             <%= f.label :monster_id, 'モンスター：' %>
-            <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし' %><br />
+            <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし' %><br/>
 
-            <%= f.submit '検索' %>
+            <div class="form-group mt-2">
+              <%= f.search_field :title_or_user_name_cont, :placeholder => 'タイトル、投稿者を入力して絞り込めます', class: 'form-control form-control-sm' %>
+            </div>
+      
+            <%= f.submit '絞り込む', class:'btn btn-primary btn' %>
           <% end %>
         </div>
       </div>

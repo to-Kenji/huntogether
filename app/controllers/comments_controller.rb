@@ -1,14 +1,18 @@
 class CommentsController < ApplicationController
   def create
     @technique = Technique.find(params[:technique_id])
-    @comments = @technique.comments.order(created_at: :desc)
+    @comments = @technique.comments.recent
     @comment = current_user.comments.build(comment_params)
     @comment.save
+    render :index
   end
   
   def destroy
+    @technique = Technique.find(params[:technique_id])
+    @comments = @technique.comments.recent
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
+    render :index
   end
 
   private

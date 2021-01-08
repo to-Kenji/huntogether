@@ -29,7 +29,11 @@
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user-circle"></i>
+                <% if current_user.image? %>
+                  <%= image_tag current_user.image.thumb30.url, class: 'icon' %>
+                <% else %>
+                  <%= image_tag "/assets/default.png", class: 'navbar-icon' %>
+                <% end %>    
             </a>
             <div class="dropdown-menu">
               <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>

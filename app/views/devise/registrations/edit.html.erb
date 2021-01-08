@@ -20,6 +20,8 @@
         <%= f.label :image, 'プロフィール画像' %><br/>
         <%= image_tag(@user.image.thumb40.url) if @user.image? %>
         <%= f.file_field :image %>
+        <%= f.check_box :remove_image %>
+        画像を削除
       </div>
 
 

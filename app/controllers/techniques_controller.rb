@@ -1,18 +1,18 @@
 class TechniquesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technique, only: [:show, :edit, :update, :destroy]
-  before_action :set_difficulties, only: [:index, :new, :show, :edit, :create]
+  before_action :set_difficulties, only: [:new, :edit]
   def index
-    @techniques = Technique.all.page(params[:page]).per(8)
+    @techniques = Technique.all.recent.page(params[:page]).per(8)
     if @q = Technique.ransack(params[:q])
-      @techniques = @q.result.page(params[:page]).per(8)
+      @techniques = @q.result.recent.page(params[:page]).per(8)
     end
   end
 
   def show
     @user = @technique.user
     @comment = Comment.new
-    @comments = @technique.comments.order(created_at: :desc)
+    @comments = @technique.comments.recent
   end
 
   def new
