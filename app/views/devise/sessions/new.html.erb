@@ -11,11 +11,15 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン", class: 'btn btn-primary btn-block' %>
+        <%= f.submit "ログイン", class: 'btn btn-info btn-block mb-2' %>
       </div>
     <% end %>
-
+    
+    <div class="guest-login-button text-center">
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-primary mb-2' %>
+    </div>
     <%= render "devise/shared/links" %>
+    <%= link_to 'トップへ戻る', root_path %>
   </div>
 </div>
 

@@ -1,24 +1,64 @@
 <div class="row">
-  <div class="image col-md-6 offset-md-3 text-center mb-3">
-  <% if @user.image? %>
-    <%= image_tag @user.image.thumb100.url, class: 'icon' %>
-  <% else %>
-    <%= image_tag "/assets/default.png", class: 'default-icon' %>
-  <% end %>
+  <div class="profile col-md-4">
+    <div class="card text-center">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="image">
+            <% if @user.image? %>
+              <%= image_tag @user.image.thumb100.url, class: 'icon' %>
+            <% else %>
+              <%= image_tag "/assets/default.png", class: 'default-icon' %>
+            <% end %>
+          </div>
+          <h4 class="p-2"><%= @user.name %></h4>
+        </li>
+        <li class="list-group-item">
+          <%= simple_format(@user.profile) %>
+          <% if @user.id == current_user.id %>
+            <%= link_to 'プロフィールの編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-block btn-info' %>
+          <% end %>
+        </li>
+
+        <li class="list-group-item">
+          ここに評価のアベレージ（星いくつ）
+        </li>
+      </ul>
+    </div>
   </div>
-  
-  <div class="card text-center col-md-6 offset-md-3">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <h3 class="p-3"><%= @user.name %></h3>
-        <% if @user.id == current_user.id %>
-          <%= link_to '編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-sm btn-info' %>
-        <% end %>
-      </li>
-      <li class="list-group-item">
-        <%= simple_format(@user.profile) %>
-      </li>
-    </ul>
+
+  <div class="techniques card col-md-8">
+    <h5 class="card-header">全ての投稿</h5>
+    <% unless @techniques.exists? %>
+      投稿はありません
+    <% end %>
+    <table class="table table-borderd">
+      <% @techniques.each do |technique| %>
+        <tr>
+          <td>
+            <div class="title">
+              <%= link_to technique_path(technique) do %>
+                <%= technique.title%>
+              <% end %>
+              <% if technique.youtube_url? %>
+                <i class="fab fa-youtube"></i>
+              <% end %>
+            </div>
+            <div class="info d-flex justify-content-between">
+              <div class="likes-comments">
+                <i class="fa fa-heart unlike-btn"></i>
+                <%= technique.likes.count %>
+                <i class="fas fa-comments ml-2"></i>
+                <%= technique.comments.count %>
+              </div>
+              <div class="created-at">
+                <%= technique.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+      <%= paginate @techniques %>
   </div>
 </div>
    

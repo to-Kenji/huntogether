@@ -25,9 +25,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb40 do 
     process resize_and_pad: [40, 40, "black"] 
   end 
-  version :thumb30 do 
-    process resize_and_pad: [30, 30, "black"] 
-  end 
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
