@@ -50,8 +50,13 @@
             <%= render 'technique', technique: @technique %>
           </div>
         </div>
-        <div class="favorite-button">
-          <%= render 'bookmarks/favorite_button', technique: @technique %>
+        <div class="mt-3">
+          <div id="favorite-button">
+            <%= render 'bookmarks/favorite_button' %>    
+          </div>
+          <div id="favors-count">
+            <%= @technique.favors.count %>
+          </div>
         </div>
       </li>
     </ul>
