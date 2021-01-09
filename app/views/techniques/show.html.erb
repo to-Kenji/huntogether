@@ -45,8 +45,13 @@
         <div class="created-time mt-2">
           投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
         </div>
-        <div id="technique_<%=@technique.id %>" class="mt-3">
-          <%= render 'technique', technique: @technique %>
+        <div class="like-button">
+          <div id="technique_<%=@technique.id %>" class="mt-3">
+            <%= render 'technique', technique: @technique %>
+          </div>
+        </div>
+        <div class="favorite-button">
+          <%= render 'bookmarks/favorite_button', technique: @technique %>
         </div>
       </li>
     </ul>
