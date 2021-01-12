@@ -32,16 +32,22 @@
         </li>
       <% end %>
       <li class="list-group-item">
-            <div class="user-area">
-              <%= link_to user_path(@user) do %>
-                <% if @user.image? %>
-                  <%= image_tag @user.image.thumb40.url, class: 'icon' %>
-                <% else %>
-                  <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
-                <% end %>
-                <%= @user.name %>
-              <% end %>        
-            </div>
+        <div class="user-area d-flex justify-content-center">
+          <div class="user-info mr-3">
+            <%= link_to user_path(@user) do %>
+              <% if @user.image? %>
+                <%= image_tag @user.image.thumb40.url, class: 'icon' %>
+              <% else %>
+                <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+              <% end %>
+              <%= @user.name %>
+            <% end %>
+          </div>
+          <div class="follow-button">
+            <%= render 'relationships/follow_button' %>
+          </div>
+        </div>
+
         <div class="created-time mt-2">
           投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
         </div>

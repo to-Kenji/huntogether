@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     member do
       get :favorites
+      get :followings
+      get :followers
     end
   end
   resources :techniques do
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
 
