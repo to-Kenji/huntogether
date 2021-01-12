@@ -13,5 +13,8 @@ class Technique < ApplicationRecord
   
   scope :recent, -> { order(created_at: :desc) }
 
-
+  def self.create_technique_ranks
+    top_bookmarks = Bookmark.group(:technique_id).order('count(technique_id) desc').limit(5).pluck(:technique_id)
+    Technique.find(top_bookmarks)
+  end
 end

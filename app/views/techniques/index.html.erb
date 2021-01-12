@@ -3,7 +3,9 @@
 <div class="row justify-content-between">
   <div class="menu col-md-5">
     <aside>
-      <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
+      <div class="create-button">
+        <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
+      </div>
       <div class="card text-center mt-2">
         <strong class="mt-2">条件を指定して絞り込む</strong>
         <div class="search-form p-1">
@@ -20,6 +22,31 @@
       
             <%= f.submit '絞り込む', class:'btn btn-primary btn' %>
           <% end %>
+        </div>
+      </div>
+      <div class="card mt-3 mb-3">
+        <div class="card-header text-center">
+          <i class="fas fa-award"></i> お気に入りランキング <i class="fas fa-award"></i>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <% @technique_ranks.each.with_index(1) do |technique_rank, i| %>
+              <li class="list-group-item">
+                <div class="ranking d-flex justify-content-between">
+                  <div class="rank">
+                    <%= i %>
+                    <%= link_to technique_path(technique_rank) do %>
+                      <%= truncate(technique_rank.title, length: 20) %>
+                    <% end %>
+                  </div>
+                  <div class="rank-info">
+                    <i class="fas fa-bookmark"></i>
+                    <%= technique_rank.favors.count %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </aside>
@@ -60,17 +87,20 @@
                 </div>
               </div>
               <div class="information col-md-4 text-center">
-                <div class="like-comment d-flex justify-content-center mb-3">
+                <div class="d-flex justify-content-center mb-3">
                   <div class="like-count mr-3">
                     <i class="fa fa-heart unlike-btn"></i>
                     <%= technique.likes.count %>
                   </div>
-
-                  <div class="comment-count">
+                  <div class="comment-count mr-3">
                     <%= link_to technique_path(technique, anchor: 'comments-area') do %>
                       <i class="fas fa-comments"></i>
                     <% end %>
                     <%= technique.comments.count %>
+                  </div>
+                  <div class="bookmark-count">
+                    <i class="fas fa-bookmark"></i>
+                    <%= technique.favors.count %>
                   </div>
                 </div>
                 <div class="user-area">

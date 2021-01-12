@@ -17,8 +17,10 @@
           <% if @user.id == current_user.id %>
             <%= link_to 'プロフィールの編集', edit_user_registration_path(id: current_user.id), class: 'btn btn-block btn-info' %>
           <% end %>
+          <div class="logout-button m-2">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'btn btn-outline-danger' %>
+          </div>
         </li>
-
         <li class="list-group-item">
           ここに評価のアベレージ（星いくつ）
         </li>
@@ -27,7 +29,7 @@
   </div>
 
   <div class="techniques card col-md-8">
-    <h5 class="card-header">全ての投稿</h5>
+    <div class="card-header">全ての投稿</div>
     <% unless @techniques.exists? %>
       投稿はありません
     <% end %>
@@ -43,12 +45,14 @@
                 <i class="fab fa-youtube"></i>
               <% end %>
             </div>
-            <div class="info d-flex justify-content-between">
-              <div class="likes-comments">
+            <div class="d-flex justify-content-between">
+              <div class="info">
                 <i class="fa fa-heart unlike-btn"></i>
                 <%= technique.likes.count %>
                 <i class="fas fa-comments ml-2"></i>
                 <%= technique.comments.count %>
+                <i class="fas fa-bookmark ml-2"></i>
+                <%= technique.favors.count %>
               </div>
               <div class="created-at">
                 <%= technique.created_at.strftime('%Y/%m/%d') %>
