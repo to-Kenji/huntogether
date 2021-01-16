@@ -49,9 +49,18 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
+  end
+
+  def following_techniques
+    Technique.where(user_id: self.following_ids)
+  end
+
+  def favorite_techniques
+    Technique.where(id: self.favorite_ids)
   end
 end

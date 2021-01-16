@@ -2,12 +2,16 @@ class TechniquesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technique, only: [:show, :edit, :update, :destroy]
   before_action :set_difficulties, only: [:new, :edit]
+
   def index
     @techniques = Technique.all.recent.page(params[:page]).per(5)
     if @q = Technique.ransack(params[:q])
       @techniques = @q.result.recent.page(params[:page]).per(5)
     end
     @technique_ranks = Technique.create_technique_ranks
+
+    @following_techniques = current_user.following_techniques.recent.page(params[:page]).per(5)
+    @favorite_techniques = current_user.favorite_techniques.recent.page(params[:page]).per(5)
   end
 
   def show

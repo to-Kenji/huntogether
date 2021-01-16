@@ -52,72 +52,28 @@
     </aside>
   </div>
   <div class="techniques col-md-7">
-    <% if @techniques.empty? %>
-      <div class="text-center">
-        <p>投稿はありません</p>
+    <ul class="nav nav-tabs" id="techniqueTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">全体</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="favorite-tab" data-toggle="tab" href="#favorite" role="tab" aria-controls="favorite" aria-selected="false">お気に入り</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="techniqueTabContent">
+      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+        <%= render 'technique_cards', techniques: @techniques %>
       </div>
-    <% else %>
-      <% @techniques.each do |technique| %>
-        <div class="card mb-3">
-            <div class="card-header">
-              <div class="title-area text-center">
-                <strong>
-                  <%= link_to technique_path(technique) do %>
-                    <%= technique.title %>
-                  <% end %>
-                </strong>
-                <% if technique.youtube_url? %>
-                  <i class="fab fa-youtube"></i>
-                <% end %>
-              </div>
-            </div>
-            <div class="card-body row">
-              <div class="body col-md-6 offset-md-1 text-center">
-                <div class="content-area">
-                  <div class="weapon mb-2">
-                    武器：<strong><%= technique.weapon.name %></strong>
-                  </div>
-                  <div class="monster mb-2">
-                    モンスター：<strong><%= technique.monster.name %></strong>
-                  </div>
-
-                  <div class="difficulty mb-2">
-                    難易度：<strong><%= technique.difficulty %></strong>
-                  </div>
-                </div>
-              </div>
-              <div class="information col-md-4 text-center">
-                <div class="d-flex justify-content-center mb-3">
-                  <div class="like-count mr-3">
-                    <i class="fa fa-heart unlike-btn"></i>
-                    <%= technique.likes.count %>
-                  </div>
-                  <div class="comment-count mr-3">
-                    <%= link_to technique_path(technique, anchor: 'comments-area') do %>
-                      <i class="fas fa-comments"></i>
-                    <% end %>
-                    <%= technique.comments.count %>
-                  </div>
-                  <div class="bookmark-count">
-                    <i class="fas fa-bookmark"></i>
-                    <%= technique.favors.count %>
-                  </div>
-                </div>
-                <div class="user-area">
-                  <%= link_to user_path(technique.user) do %>
-                    <% if technique.user.image? %>
-                      <%= image_tag technique.user.image.thumb40.url, class: 'icon' %>
-                    <% else %>
-                      <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
-                    <% end %>
-                    <%= technique.user.name %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-        </div>
-      <% end %>
-        <%= paginate @techniques %>
-    <% end %>
+      <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+        <%= render 'technique_cards', techniques: @following_techniques %>
+      </div>
+      <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
+        <%= render 'technique_cards', techniques: @favorite_techniques %>
+      </div>
+    </div>
   </div>
 </div>
+
