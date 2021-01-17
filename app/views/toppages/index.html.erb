@@ -1,61 +1,19 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h3>
-      Monster Hunter World Iceborn<br/>
-      既存の攻略サイトとは違う、<br/>
-      熟練ハンター達が集い、その技を共有し、高め合う場所
-    </h3>
-    <div class="button mt-3">
-      <% if user_signed_in? %>
-        <span>
-          <%= link_to user_path(current_user) do %>
-            <%= current_user.name %>
-          <% end %>
-        </span>
-        <span>さん、こんにちは！</span>
-      <% else %>
-        <div class="buttons text-center">
-          <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-info' %>
-          <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-info' %>
-          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </div>
+<% unless user_signed_in? %>
+  <%= render 'welcome' %>
+<% end %>
+<div class="row justify-content-between">
+  <div class="menu col-md-5">
+    <aside>
+      <div class="search-form">
+        <%= render 'layouts/shared/search_form', url: root_path %>
+      </div>
+      <div class="ranking">
+        <%= render 'ranking' %>
+      </div>
+    </aside>
+  </div>
+  <div class="techniques col-md-7">
+    <%= render 'techniques/technique_cards', techniques: @techniques %>
   </div>
 </div>
-<div class="row justify-content-around">
-  <div class="card col-sm-5">
-    <div class="card-header text-center">
-      <%= link_to techniques_path do %>
-        <%= 'ハンター養成所' %><i class="fas fa-school"></i>
-      <% end %>
-    </div>
-    <div class="card-body">
-      <p>
-        「ハンター養成所」では、モンスターや武器毎に、熟練ハンター達が持つ「技」が公開されています。<br/>
-        ここはプレイヤーのスキルを高める言わば「学びの場」です。<br/>
-        学ぶだけでなく、自分の得た技を他のハンター達に共有することもできます。
-        <div class="text-center">
-          <%= link_to '養成所へ向かう', techniques_path, class: 'btn btn-info'%>
-        </div>
-      </p>
-    </div>
-  </div>
-  <div class="card col-sm-5">
-    <div class="card-header text-center">
-      <a href="#">救難信号<i class="fas fa-hands-helping"></i></a>
-    </div>
-    <div class="card-body">
-      <p>
-        「救難信号」では、一緒に狩りをする仲間を募集できます。<br/>
-        困ったときは是非活用してください。<br/>
-        通常の救難信号とは違い、事前に情報交換した上で、<br/>
-        技術の高いメンバーを集めて狩りに出発しましょう。<br/>
-        楽しくワイワイ集まって交流するのも良いでしょう。<br/>
-        <div class="text-center">
-          <a class="btn btn-info" href="#">救難信号を出す</a>
-        </div>
-      </p>
-    </div>
-  </div> 
-</div>
+

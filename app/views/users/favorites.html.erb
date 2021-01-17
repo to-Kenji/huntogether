@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="search-form col-md-5">
+    <h3 class="text-center">お気に入りした投稿</h3>
+    <%= render 'layouts/shared/search_form', url: favorites_user_path(current_user) %>
+  </div>
+  <div class="techniques col-md-7">
+    <% unless @favorites.exists? %>
+      投稿はありません
+    <% end %>
+    <table class="table table-borderd">
+      <% @favorites.each do |technique| %>
+        <tr>
+          <td>
+            <div class="title">
+              <%= link_to technique_path(technique) do %>
+                <%= technique.title%>
+              <% end %>
+              <% if technique.youtube_url? %>
+                <i class="fab fa-youtube"></i>
+              <% end %>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="info">
+                <i class="fa fa-heart unlike-btn"></i>
+                <%= technique.likes.count %>
+                <i class="fas fa-comments ml-2"></i>
+                <%= technique.comments.count %>
+                <i class="fas fa-bookmark ml-2"></i>
+                <%= technique.favors.count %>
+              </div>
+              <div class="created-at">
+                <%= technique.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><%= paginate @favorites %></td>
+      </tr>
+    </table>
+  </div>
+</div>

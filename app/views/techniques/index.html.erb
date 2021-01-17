@@ -1,79 +1,78 @@
-<h1>ハンター養成所</h1>
+<%# <h1>ハンター養成所</h1> %>
 
-<div class="row justify-content-between">
-  <div class="menu col-md-5">
-    <aside>
-      <div class="create-button">
-        <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %>
-      </div>
-      <div class="card text-center mt-2">
-        <strong class="mt-2">条件を指定して絞り込む</strong>
-        <div class="search-form p-1">
-          <%= search_form_for @q do |f| %>
-            <%= f.label :weapon_id, '使用武器：' %>
-            <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし' %><br/>
+<%# <div class="row justify-content-between"> %>
+  <%# <div class="menu col-md-5"> %>
+    <%# <aside> %>
+      <%# <div class="create-button"> %>
+        <%# <%= link_to '投稿する', new_technique_path, class: 'btn btn-info btn-block' %> %>
+      <%# </div> %>
+      <%# <div class="card text-center mt-2"> %>
+        <%# <strong class="mt-2">条件を指定して絞り込む</strong> %>
+        <%# <div class="search-form p-1"> %>
+          <%# <%= search_form_for @q do |f| %> %>
+            <%# <%= f.label :weapon_id, '使用武器：' %> %>
+            <%# <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし' %><br/> %>
 
-            <%= f.label :monster_id, 'モンスター：' %>
-            <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし' %><br/>
+            <%# <%= f.label :monster_id, 'モンスター：' %> %>
+            <%# <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし' %><br/> %>
 
-            <div class="form-group mt-2">
-              <%= f.search_field :title_or_user_name_cont, :placeholder => 'タイトル、投稿者を入力して絞り込めます', class: 'form-control form-control-sm' %>
-            </div>
+            <%# <div class="form-group mt-2"> %>
+              <%# <%= f.search_field :title_or_user_name_cont, :placeholder => 'タイトル、投稿者を入力して絞り込めます', class: 'form-control form-control-sm' %> %>
+            <%# </div> %>
       
-            <%= f.submit '絞り込む', class:'btn btn-primary btn' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="card mt-3 mb-3">
-        <div class="card-header text-center">
-          <i class="fas fa-award"></i> お気に入りランキング <i class="fas fa-award"></i>
-        </div>
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <% @technique_ranks.each.with_index(1) do |technique_rank, i| %>
-              <li class="list-group-item">
-                <div class="ranking d-flex justify-content-between">
-                  <div class="rank">
-                    <%= i %>
-                    <%= link_to technique_path(technique_rank) do %>
-                      <%= truncate(technique_rank.title, length: 20) %>
-                    <% end %>
-                  </div>
-                  <div class="rank-info">
-                    <i class="fas fa-bookmark"></i>
-                    <%= technique_rank.favors.count %>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </aside>
-  </div>
-  <div class="techniques col-md-7">
-    <ul class="nav nav-tabs" id="techniqueTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">全体</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="favorite-tab" data-toggle="tab" href="#favorite" role="tab" aria-controls="favorite" aria-selected="false">お気に入り</a>
-      </li>
-    </ul>
-    <div class="tab-content" id="techniqueTabContent">
-      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-        <%= render 'technique_cards', techniques: @techniques %>
-      </div>
-      <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
-        <%= render 'technique_cards', techniques: @following_techniques %>
-      </div>
-      <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
-        <%= render 'technique_cards', techniques: @favorite_techniques %>
-      </div>
-    </div>
-  </div>
-</div>
-
+            <%# <%= f.submit '絞り込む', class:'btn btn-primary btn' %> %>
+          <%# <% end %> %>
+        <%# </div> %>
+      <%# </div> %>
+      <%# <div class="card mt-3 mb-3"> %>
+        <%# <div class="card-header text-center"> %>
+          <%# <i class="fas fa-award"></i> お気に入りランキング <i class="fas fa-award"></i> %>
+        <%# </div> %>
+        <%# <div class="card-body"> %>
+          <%# <ul class="list-group list-group-flush"> %>
+            <%# <% @technique_ranks.each.with_index(1) do |technique_rank, i| %> %>
+              <%# <li class="list-group-item"> %>
+                <%# <div class="ranking d-flex justify-content-between"> %>
+                  <%# <div class="rank"> %>
+                    <%# <%= i %> %>
+                    <%# <%= link_to technique_path(technique_rank) do %> %>
+                      <%# <%= truncate(technique_rank.title, length: 20) %> %>
+                    <%# <% end %> %>
+                  <%# </div> %>
+                  <%# <div class="rank-info"> %>
+                    <%# <i class="fas fa-bookmark"></i> %>
+                    <%# <%= technique_rank.favors.count %> %>
+                  <%# </div> %>
+                <%# </div> %>
+              <%# </li> %>
+            <%# <% end %> %>
+          <%# </ul> %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# </aside> %>
+  <%# </div> %>
+  <%# <div class="techniques col-md-7"> %>
+    <%# <ul class="nav nav-tabs" id="techniqueTab" role="tablist"> %>
+      <%# <li class="nav-item"> %>
+        <%# <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">全体</a> %>
+      <%# </li> %>
+      <%# <li class="nav-item"> %>
+        <%# <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a> %>
+      <%# </li> %>
+      <%# <li class="nav-item"> %>
+        <%# <a class="nav-link" id="favorite-tab" data-toggle="tab" href="#favorite" role="tab" aria-controls="favorite" aria-selected="false">お気に入り</a> %>
+      <%# </li> %>
+    <%# </ul> %>
+    <%# <div class="tab-content" id="techniqueTabContent"> %>
+      <%# <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab"> %>
+        <%# <%= render 'technique_cards', techniques: @techniques %> %>
+      <%# </div> %>
+      <%# <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab"> %>
+        <%# <%= render 'technique_cards', techniques: @following_techniques %> %>
+      <%# </div> %>
+      <%# <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab"> %>
+        <%# <%= render 'technique_cards', techniques: @favorite_techniques %> %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div> %>

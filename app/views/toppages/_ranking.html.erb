@@ -1,0 +1,25 @@
+<div class="card mt-3 mb-3">
+  <div class="card-header text-center">
+    <i class="fas fa-award"></i> お気に入りランキング <i class="fas fa-award"></i>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <% @technique_ranks.each.with_index(1) do |technique_rank, i| %>
+        <li class="list-group-item">
+          <div class="ranking d-flex justify-content-between">
+            <div class="rank">
+              <%= i %>
+              <%= link_to technique_path(technique_rank) do %>
+                <%= truncate(technique_rank.title, length: 20) %>
+              <% end %>
+            </div>
+            <div class="rank-info">
+              <i class="fas fa-bookmark"></i>
+              <%= technique_rank.favors.count %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
