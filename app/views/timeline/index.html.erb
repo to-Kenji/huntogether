@@ -1,11 +1,8 @@
-<% unless user_signed_in? %>
-  <%= render 'welcome' %>
-<% end %>
-<div class="row justify-content-between">
+<div class="row">
   <div class="menu col-md-4">
     <aside>
       <div class="search-form">
-        <%= render 'layouts/shared/search_form', content: 'All', url: root_path %>
+        <%= render 'layouts/shared/search_form', content: 'Following', url: timeline_index_path %>
       </div>
       <div class="ranking">
         <%= render 'layouts/shared/ranking' %>
@@ -15,17 +12,17 @@
   <div class="techniques col-md-8">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="<%= root_path %>">All</a>
+        <a class="nav-link" href="<%= root_path %>">All</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= timeline_index_path %>">Following</a>
+        <a class="nav-link active" href="<%= timeline_index_path %>">Following</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= favorites_user_path(current_user) %>">Favorites</a>
       </li>
     </ul>
     <div id="paginate">
-      <%= render 'techniques/techniques', techniques: @techniques %>
+      <%= render 'techniques/techniques', techniques: @following_techniques %>
     </div>
   </div>
 </div>

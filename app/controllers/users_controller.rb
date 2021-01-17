@@ -13,5 +13,10 @@ class UsersController < ApplicationController
     if @q = @favorites.ransack(params[:q])
       @favorites = @q.result.recent.page(params[:page]).per(5)
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end

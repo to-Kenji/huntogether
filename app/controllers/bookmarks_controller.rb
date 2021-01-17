@@ -8,7 +8,6 @@ class BookmarksController < ApplicationController
       format.html {redirect_to @technique}
       format.js
     end
-  
   end
 
   def destroy

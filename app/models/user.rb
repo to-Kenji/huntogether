@@ -59,8 +59,4 @@ class User < ApplicationRecord
   def following_techniques
     Technique.where(user_id: self.following_ids)
   end
-
-  def favorite_techniques
-    Technique.where(id: self.favorite_ids)
-  end
 end
