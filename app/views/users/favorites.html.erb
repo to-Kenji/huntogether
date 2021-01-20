@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="search-form col-md-4">
+  <div class="search-form col-md-5">
     <%= render 'layouts/shared/search_form', content: 'Favorites', url: favorites_user_path(current_user) %>
   </div>
-  <div class="techniques col-md-8">
+  <div class="techniques col-md-7">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="<%= root_path %>">All</a>
@@ -14,8 +14,11 @@
         <a class="nav-link active" href="<%= favorites_user_path(current_user) %>">Favorites</a>
       </li>
     </ul>
-    <div id="paginate">
+    <div id="technique-list">
       <%= render 'techniques/techniques', techniques: @favorites %>
+    </div>
+    <div class="more-list text-center">
+      <%= link_to_next_page @favorites, 'もっと見る', remote: true, id: 'paginate' %>
     </div>
   </div>
 </div>

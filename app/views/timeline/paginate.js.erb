@@ -1,0 +1,2 @@
+$("#technique-list").append("<%= j(render 'techniques/techniques', techniques: @following_techniques) %>");
+$("#paginate").replaceWith("<%= j(link_to_next_page(@following_techniques, 'もっと見る', remote:true, id: 'paginate'))%>");

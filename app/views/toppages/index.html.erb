@@ -2,7 +2,7 @@
   <%= render 'welcome' %>
 <% end %>
 <div class="row justify-content-between">
-  <div class="menu col-md-4">
+  <div class="menu col-md-5">
     <aside>
       <div class="search-form">
         <%= render 'layouts/shared/search_form', content: 'All', url: root_path %>
@@ -12,20 +12,32 @@
       </div>
     </aside>
   </div>
-  <div class="techniques col-md-8">
+  <div class="techniques col-md-7">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="<%= root_path %>">All</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= timeline_index_path %>">Following</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= favorites_user_path(current_user) %>">Favorites</a>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= timeline_index_path %>">Following</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= favorites_user_path(current_user) %>">Favorites</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Following</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Favorites</a>
+        </li>
+      <% end %>
     </ul>
-    <div id="paginate">
+    <div id="technique-list">
       <%= render 'techniques/techniques', techniques: @techniques %>
+    </div>
+    <div class="more-list text-center">
+      <%= link_to_next_page @techniques, 'もっと見る', remote: true, id: 'paginate' %>
     </div>
   </div>
 </div>

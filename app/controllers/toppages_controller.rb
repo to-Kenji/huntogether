@@ -6,7 +6,7 @@ class ToppagesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js {render :paginate}
     end
     @technique_ranks = Technique.create_technique_ranks
   end

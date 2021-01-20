@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js {render :paginate}
     end
   end
 end

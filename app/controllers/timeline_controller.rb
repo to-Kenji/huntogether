@@ -9,7 +9,7 @@ class TimelineController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js {render :paginate}
     end
     
     @technique_ranks = Technique.create_technique_ranks

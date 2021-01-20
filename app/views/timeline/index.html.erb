@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="menu col-md-4">
+  <div class="menu col-md-5">
     <aside>
       <div class="search-form">
         <%= render 'layouts/shared/search_form', content: 'Following', url: timeline_index_path %>
@@ -9,7 +9,7 @@
       </div>
     </aside>
   </div>
-  <div class="techniques col-md-8">
+  <div class="techniques col-md-7">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="<%= root_path %>">All</a>
@@ -21,8 +21,11 @@
         <a class="nav-link" href="<%= favorites_user_path(current_user) %>">Favorites</a>
       </li>
     </ul>
-    <div id="paginate">
+    <div id="technique-list">
       <%= render 'techniques/techniques', techniques: @following_techniques %>
+    </div>
+    <div class="more-list text-center">
+      <%= link_to_next_page @following_techniques, 'もっと見る', remote: true, id: 'paginate' %>     
     </div>
   </div>
 </div>
