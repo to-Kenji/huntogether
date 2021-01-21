@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="profile col-md-4">
+  <div class="profile col-md-4 mb-3">
     <div class="card text-center">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -31,44 +31,71 @@
       </ul>
     </div>
   </div>
-
-  <div class="techniques border col-md-8">
-    <h3 class="m-2">全ての投稿</h3>
-    <% unless @techniques.exists? %>
-      投稿はありません
-    <% end %>
-    <table class="table table-borderd">
+  <div class="col-md-8">
+    <h4>全ての投稿</h4>
+    <% if @techniques.empty? %>
+      <div class="text-center mt-3">
+        <p>投稿はありません</p>
+      </div>
+    <% else %>
       <% @techniques.each do |technique| %>
-        <tr>
-          <td>
-            <div class="title">
-              <%= link_to technique_path(technique) do %>
-                <%= technique.title%>
-              <% end %>
-              <% if technique.youtube_url? %>
-                <i class="fab fa-youtube"></i>
-              <% end %>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div class="info">
-                <i class="fa fa-heart unlike-btn"></i>
-                <%= technique.likes.count %>
-                <i class="fas fa-comments ml-2"></i>
-                <%= technique.comments.count %>
-                <i class="fas fa-bookmark ml-2"></i>
-                <%= technique.favors.count %>
+        <table class="table">
+          <tr>
+            <td>
+              <div class="technique-header">
+                <div class="created_at">
+                  <%= technique.created_at.strftime('%Y年%m月%d日') %>
+                </div>
               </div>
-              <div class="created-at">
-                <%= technique.created_at.strftime('%Y/%m/%d') %>
+              <div class="technique-body">
+                <div class="technique-title">
+                  <% if technique.youtube_url? %>
+                    <%= link_to technique_path(technique, anchor: 'youtube'), id:'youtubeIcon' do %>
+                      <i class="fab fa-youtube fa-lg"></i>
+                    <% end %>
+                  <% end %>
+                  <%= link_to technique_path(technique) do %>
+                    <%= technique.title %>
+                  <% end %>
+                </div>
+                <div class="details">
+                  <div class="monster">
+                    <span class="badge badge-secondary">
+                      <%= technique.monster.name %>
+                    </span>
+                  </div>
+                  <div class="weapon">
+                    <span class="badge badge-pill badge-dark">
+                      <%= technique.weapon.name %>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
+                  <div class="reputation">
+                    <div class="like-count">
+                      <i class="fa fa-heart unlike-btn"></i>
+                      <%= technique.likes.count %>
+                    </div>
+                    <div class="bookmark-count">
+                      <i class="fas fa-bookmark"></i>
+                      <%= technique.favors.count %>
+                    </div>
+                    <% if technique.comments.exists? %>
+                      <div class="comment-count">
+                        <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                          <i class="fas fa-comments"></i>
+                        <% end %>
+                        <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                          <%= technique.comments.count %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+              </div>
+            </td>
+          </tr>
+        </table>
       <% end %>
-    </table>
-      <%= paginate @techniques %>
+    <% end %>
   </div>
 </div>
-   
-  
-

@@ -4,7 +4,7 @@ class Technique < ApplicationRecord
   belongs_to :monster
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :favors, through: :bookmarks, source: :user
 
   validates :title, presence: true, length: { maximum: 30 }

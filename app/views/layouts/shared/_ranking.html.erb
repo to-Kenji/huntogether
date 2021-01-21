@@ -1,6 +1,6 @@
 <div class="card mt-3 mb-3">
   <div class="card-header text-center">
-    <i class="fas fa-award"></i> お気に入りランキング <i class="fas fa-award"></i>
+    <i class="fas fa-award"></i> お気に入りTOP5 <i class="fas fa-award"></i>
   </div>
   <div class="card-body">
     <ul class="list-group list-group-flush">
@@ -10,7 +10,7 @@
             <div class="rank">
               <%= i %>
               <%= link_to technique_path(technique_rank) do %>
-                <%= truncate(technique_rank.title, length: 15) %>
+                <%= truncate(technique_rank.title, length: 20) %>
               <% end %>
             </div>
             <div class="rank-info">

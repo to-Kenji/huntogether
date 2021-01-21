@@ -28,8 +28,8 @@
 
 .default-icon-sm {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
 }
 
 .icon {
@@ -58,3 +58,63 @@
   border-bottom: none;
 }
 
+
+$link-color: #4b4f52;
+
+.technique-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+  .created_at {
+    color:gray;
+    align-items: center;
+    font-size: 14px;
+    display: flex;
+  }
+  .avatarLink {
+    display: flex;
+    align-items: center;
+    a {
+      color: $link-color;
+      margin-right: 3px;
+      font-size: 15px;
+    }
+  }
+}
+
+.technique-body {
+  .technique-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    a {
+      color: $link-color;
+    }
+    #youtubeIcon {
+      text-decoration: none;
+    }
+  }
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+    .monster {
+      margin: 0px 16px 4px 0px;
+    }
+  }
+}
+
+.reputation {
+  display: flex;
+  .like-count {
+    margin-right: 10px;
+  }
+  .bookmark-count {
+    margin-right: 10px;
+  }
+  .comment-count {
+    a {
+      text-decoration: none;
+    }
+  }
+}

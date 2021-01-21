@@ -42,7 +42,7 @@ class TechniquesController < ApplicationController
   def destroy
     @technique.destroy
     flash[:notice] = '投稿を削除しました。'
-    redirect_to techniques_path
+    redirect_to root_path
   end
 
   private
