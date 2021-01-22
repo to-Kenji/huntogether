@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
-  validates :profile, length: { maximum: 200 }
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :profile, length: { maximum: 80 }
   has_many :techniques, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy

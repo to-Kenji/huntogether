@@ -2,6 +2,89 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+
 ul {
   list-style: none;
 }
+
+.technique-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main {
+  margin-bottom: 15px;
+  .technique-info {
+    display: flex;
+    .like-button {
+      margin-right: 10px;
+    }
+    .bookmark {
+      text-align: center;
+      margin-right: 10px;
+      
+    }
+  }
+}
+
+.tags {
+  margin-bottom: 15px;
+  .monster {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .weapon {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.youtube {
+  margin-bottom: 15px;
+  .youtube-link {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 75%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+.user {
+  margin-bottom: 15px;
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .user-info {
+    display: flex;
+    margin-bottom: 10px;
+    .user-avatar {
+      margin-right: 5px;
+    }
+    .user-name {
+      display: flex;
+      align-items: center;
+      a {
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+  .follow-button {
+    align-items: center;
+    display: flex;
+    margin-bottom: 10px;
+  }
+}
+

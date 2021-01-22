@@ -26,11 +26,6 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :difficulty, '難易度：' %>
-        <%= f.select :difficulty, @difficulties, {}, required: true %>
-      </div>
-
-      <div class="form-group">
         <%= f.label :youtube_url, 'YouTubeの共有リンクを貼り付けてください：' %>
         <%= f.text_field :youtube_url, class: 'form-control-sm' %>
       </div>

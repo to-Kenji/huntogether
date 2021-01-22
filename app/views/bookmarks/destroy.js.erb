@@ -1,2 +1,2 @@
 $("#favorite-button").html("<%= j(render 'favorite')%>");
-$("#favors-count").html("お気に入り登録数：<%= @technique.favors.count %>");
+$("#favors-count").html("<%= j(render 'favors_count') %>");

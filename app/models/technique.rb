@@ -8,8 +8,7 @@ class Technique < ApplicationRecord
   has_many :favors, through: :bookmarks, source: :user
 
   validates :title, presence: true, length: { maximum: 30 }
-  validates :body, presence: true, length: { maximum: 255 }
-  validates :difficulty, presence: true
+  validates :body, presence: true
   
   scope :recent, -> { order(created_at: :desc) }
 

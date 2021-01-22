@@ -7,7 +7,7 @@
     <table class="table">
       <tr>
         <td>
-          <div class="technique-header">
+          <div class="techniques-header">
             <div class="avatarLink">
               <%= link_to user_path(technique.user) do %>
                 <% if technique.user.image? %>
@@ -24,8 +24,8 @@
               が<%= technique.created_at.strftime('%Y年%m月%d日') %>に投稿
             </div>
           </div>
-          <div class="technique-body">
-            <div class="technique-title">
+          <div class="techniques-body">
+            <div class="techniques-title">
               <% if technique.youtube_url? %>
                 <%= link_to technique_path(technique, anchor: 'youtube'), id:'youtubeIcon' do %>
                   <i class="fab fa-youtube fa-lg"></i>
@@ -48,27 +48,25 @@
               </div>
             </div>
           </div>
-              <div class="reputation">
-                <div class="like-count">
-                  <i class="fa fa-heart unlike-btn"></i>
-                  <%= technique.likes.count %>
-                </div>
-                <div class="bookmark-count">
-                  <i class="fas fa-bookmark"></i>
-                  <%= technique.favors.count %>
-                </div>
-                <% if technique.comments.exists? %>
-                  <div class="comment-count">
-                    <%= link_to technique_path(technique, anchor: 'comments-area') do %>
-                      <i class="fas fa-comments"></i>
-                    <% end %>
-                    <%= link_to technique_path(technique, anchor: 'comments-area') do %>
-                      <%= technique.comments.count %>
-                    <% end %>
-                  </div>
+          <div class="reputation">
+            <div class="like-count">
+              <i class="fa fa-heart unlike-btn"></i>
+              <%= technique.likes.count %>
+            </div>
+            <div class="bookmark-count">
+              <i class="fas fa-bookmark"></i>
+              <%= technique.favors.count %>
+            </div>
+            <% if technique.comments.exists? %>
+              <div class="comment-count">
+                <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                  <i class="fas fa-comments"></i>
+                <% end %>
+                <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                  <%= technique.comments.count %>
                 <% end %>
               </div>
-            
+            <% end %>
           </div>
         </td>
       </tr>

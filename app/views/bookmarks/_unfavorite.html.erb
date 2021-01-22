@@ -1,4 +1,6 @@
 <%= form_with(model: current_user.bookmarks.find_by(technique_id: @technique.id), remote: true, method: :delete) do |f| %>
   <%= hidden_field_tag :technique_id, @technique.id %>
-  <%= f.submit 'お気に入り済', class:'btn btn-sm btn-info' %>
+  <%= f.button :type => "submit", class: 'unfavorite-icon btn btn-lg btn-light' do %>
+    <i class="fas fa-bookmark"></i>
+  <% end %>
 <% end %>

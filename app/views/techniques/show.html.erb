@@ -1,70 +1,104 @@
-<div class="card text-center">
-  <div class="card-header">
+<div class="technique-header">
+  <div class="technique-title">
     <h2><%= @technique.title %></h2>
-    <% if @technique.user.id == current_user.id %>
+  </div>
+  <% if @technique.user.id == current_user.id %>
+    <div class="edit">
       <h3>
         <%= link_to edit_technique_path(@technique) do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
       </h3>
-    <% end %>
-  </div>
-  <div class="card-body">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div class="monster-area">
-          モンスター：<strong><%= @technique.monster.name %></strong>
-        </div>
-        <div class="weapon-area">
-          武器：<strong><%= @technique.weapon.name %></strong>
-        </div>
-        <div class="difficulty-area">
-          難易度：<strong><%= @technique.difficulty %></strong>
-        </div>
-      </li>
-      <li class="list-group-item"><%= simple_format(@technique.body) %></li>
-      <% if @technique.youtube_url? %>
-        <li class="list-group-item" id="youtube">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  <% end %>
+</div>
+
+<div class="row justify-content-around">
+  <div class="main card col-md-7">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item technique-body"> 
+            <%= simple_format(@technique.body) %>
         </li>
-      <% end %>
-      <li class="list-group-item">
-        <div class="user-area d-flex justify-content-center">
-          <div class="user-info mr-3">
+        <li class="list-group-item technique-info">
+          <div class="like-button">
+            <div id="technique_<%=@technique.id %>">
+              <%= render 'technique', technique: @technique %>
+            </div>
+          </div>
+          <div class="bookmark">
+            <div id="favorite-button">
+              <%= render 'bookmarks/favorite_button' %>    
+            </div>
+            <div id="favors-count">
+              <%= render 'bookmarks/favors_count' %>
+            </div>
+          </div>
+          <div class="created-time">
+            投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="col-md-4">
+    <div class="card tags">
+      <div class="card-body">
+        <div class="monster">
+          <p>モンスター：</p>
+          <h5><span class="badge badge-secondary">
+            <%= @technique.monster.name %>
+          </span></h5>
+        </div>
+        <div class="weapon">
+          <p>使用武器：</p>
+          <h5><span class="badge badge-pill badge-dark">
+            <%= @technique.weapon.name %>
+          </span></h5>
+        </div>
+      </div>
+    </div>
+    <div class="card youtube">
+      <div class="card-body">
+        <% if @technique.youtube_url? %>
+          <div class="youtube-link">
+            <iframe src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% else %>
+          <div class="no-youtube">動画はありません</div>
+        <% end %>
+      </div>  
+    </div>
+    <div class="card user">
+      <div class="card-body">
+        <div class="user-info">
+          <div class="user-avatar">
             <%= link_to user_path(@user) do %>
               <% if @user.image? %>
                 <%= image_tag @user.image.thumb40.url, class: 'icon' %>
               <% else %>
-                <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+                <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
               <% end %>
+            <% end %>
+          </div>
+          <div class="user-name">
+            <%= link_to user_path(@user) do %>
               <%= @user.name %>
             <% end %>
           </div>
-          <div class="follow-button">
-            <%= render 'relationships/follow_button' %>
-          </div>
         </div>
-
-        <div class="created-time mt-2">
-          投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
+        <div class="follow-button">
+          <%= render 'relationships/follow_button' %>
         </div>
-        <div class="like-button">
-          <div id="technique_<%=@technique.id %>" class="mt-3">
-            <%= render 'technique', technique: @technique %>
+          <div class="user-profile">
+            <%= simple_format(@user.profile) %>
           </div>
-        </div>
-        <div class="mt-3">
-          <div id="favorite-button">
-            <%= render 'bookmarks/favorite_button' %>    
-          </div>
-          <div id="favors-count">
-            お気に入り登録数：<%= @technique.favors.count %>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+      </div>
+    </div>
+  </aside>
 </div>
+
 <%= render 'comments/form', { comment: @comment, technique: @technique} %>
 
 <div id="comments-area" class="mt-3">
