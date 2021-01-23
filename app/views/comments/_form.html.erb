@@ -1,10 +1,21 @@
-<%= form_with(model: [technique, comment], remote: true) do |f| %>
-  <div class="row mt-3 justify-content-center">
-    <div class="form-group col-md-7">
-      <%= f.text_area :content, class: 'form-control', placeholder: 'コメントを入力', rows: 1, required: true %>
-    </div><br>
-    <div class="col-md-1">
-      <%= f.submit '投稿', class: 'btn btn-outline-dark' %>
-    </div>
-  </div>
+<div class="comment-user-avatar">
+  <% if current_user.image? %>
+    <%= image_tag current_user.image.thumb40.url, class: 'icon' %>
+  <% else %>
+    <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
   <% end %>
+  <span>コメントを入力</span>
+</div>
+
+<%= form_with(model: [technique, comment], remote: true) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control form-control-sm', placeholder: 'ここに文章を入力', rows: 1, required: true %>
+  </div>
+  <div class="action form-group">
+    <%= f.submit '投稿', class: 'btn btn-sm btn-outline-dark' %>
+  </div>
+<% end %>
+ 
+
+
+

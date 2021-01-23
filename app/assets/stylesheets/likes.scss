@@ -1,7 +1,16 @@
-.like-btn {
-  color: #808080;
+.fa-heart {
+  color: #e54747
 }
 
-.unlike-btn {
-  color: #e54747
+.like-btn-round {
+  color: #808080;
+  border-radius: 50%;
+}
+.like-btn-round:hover {
+  border-color: #e54747;
+}
+.unlike-btn-round {
+  color: #e54747;
+  border-radius: 50%;
+  border-color:#e54747;
 }

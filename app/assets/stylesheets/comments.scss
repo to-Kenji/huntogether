@@ -1,3 +1,43 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ul {
+  list-style: none;
+}
+
+.first-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5px;
+  .user-name {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    a {
+      color: #4b4f52;
+    }
+  }
+  .created-at {
+    color:gray;
+    font-size: 13px;
+  }
+  span {
+    margin-left: 5px;
+  }
+}
+
+.second-row {
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.comment-form {
+  .comment-user-avatar {
+    margin-bottom: 10px;
+  }
+}
+
+.comment-list {
+  padding-left: 0;
+}

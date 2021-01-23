@@ -4,29 +4,39 @@
   <%= comments.count %>件
 </div>
 
-<ul>
+<ul class="comment-list">
   <% comments.each do |comment| %>
     <li id=comment-<%= comment.id %>>
-      <div class="comment-header d-flex">
-        <div class="user">
+      <div class="comment d-flex">
+        <div class="user-avatar">
           <%= link_to user_path(comment.user) do %>
-          <% if comment.user.image? %>
-            <%= image_tag comment.user.image.thumb40.url, class: 'icon' %>
-          <% else %>
-            <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+            <% if comment.user.image? %>
+              <%= image_tag comment.user.image.thumb24.url, class: 'icon' %>
+            <% else %>
+              <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+            <% end %>
           <% end %>
-            <%= comment.user.name %>
-          <% end %>
-          <span class="ml-4"><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
-          <% if current_user.id == comment.user.id %>
-          <span class="trash-bottun">
-            <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
-          </span>
-        <% end %>
-        </div> 
-      </div>
-      <div class="comment-content mt-3">
-        <%= simple_format(comment.content) %>
+        </div>
+        <div class="comment-content">
+          <div class="first-row">
+            <div class="user-name">
+              <%= link_to user_path(comment.user) do %>
+                <%= comment.user.name %>
+              <% end %>
+            </div>
+            <div class="created-at">
+              <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+            </div>
+            <% if current_user.id == comment.user.id %>
+              <span class="trash-bottun">
+                <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
+              </span>
+            <% end %>
+          </div>
+          <div class="second-row">
+            <%= simple_format(comment.content) %>
+          </div>
+        </div>
       </div>
     </li>
   <% end %>

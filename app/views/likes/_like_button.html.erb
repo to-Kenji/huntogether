@@ -1,0 +1,9 @@
+<% if current_user.already_liked?(technique) %>
+  <%= link_to destroy_like_path(technique), method: :DELETE, remote: true, class: 'btn btn-lg btn-light unlike-btn-round' do %>
+    <i class="fa fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to create_like_path(technique), method: :POST, remote: true, class: 'btn btn-lg btn-light like-btn-round' do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>
