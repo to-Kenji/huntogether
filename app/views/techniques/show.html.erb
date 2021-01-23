@@ -45,9 +45,42 @@
         </ul>
       </div>
     </div>
+  
+    <button class="btn btn-block btn-secondary mb-2" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">
+      コメント欄を開く
+    </button>
+    <div class="collapse" id="commentCollapse">
+      <div class="card comment-card">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div id="comments-area">
+                <%= render 'comments/index', comments: @comments %>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="comment-form">
+                <%= render 'comments/form', { comment: @comment, technique: @technique} %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <aside class="col-md-4">
+    <div class="card youtube">
+      <div class="card-body">
+        <% if @technique.youtube_url? %>
+          <div class="youtube-link">
+            <iframe src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% else %>
+          <div class="no-youtube">動画はありません</div>
+        <% end %>
+      </div>  
+    </div>
     <div class="card tags">
       <div class="card-body">
         <div class="monster">
@@ -63,17 +96,6 @@
           </span></h5>
         </div>
       </div>
-    </div>
-    <div class="card youtube">
-      <div class="card-body">
-        <% if @technique.youtube_url? %>
-          <div class="youtube-link">
-            <iframe src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        <% else %>
-          <div class="no-youtube">動画はありません</div>
-        <% end %>
-      </div>  
     </div>
     <div class="card user">
       <div class="card-body">
@@ -104,23 +126,7 @@
   </aside>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <div class="card comment-card">
-      <div class="card-body">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div id="comments-area">
-              <%= render 'comments/index', comments: @comments %>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="comment-form">
-              <%= render 'comments/form', { comment: @comment, technique: @technique} %>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
+
