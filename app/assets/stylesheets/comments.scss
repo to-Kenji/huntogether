@@ -5,6 +5,10 @@ ul {
   list-style: none;
 }
 
+li .comment {
+  display: flex;
+}
+
 .first-row {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +39,9 @@ ul {
 .comment-form {
   .comment-user-avatar {
     margin-bottom: 10px;
+  }
+  .action {
+    margin-bottom: 0;
   }
 }
 

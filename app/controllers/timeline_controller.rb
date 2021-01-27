@@ -15,3 +15,4 @@ class TimelineController < ApplicationController
     @technique_ranks = Technique.create_technique_ranks
   end
 end
+

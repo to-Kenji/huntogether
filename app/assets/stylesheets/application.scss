@@ -43,7 +43,6 @@ footer {
   pointer-events: none;
 }
 
-
 .default-icon {
   border-radius: 50%;
   width: 100px;
@@ -66,27 +65,8 @@ footer {
 }
 
 #paginate {
-	display: inline-block;
-  padding: 0.5em;
-  width: 130px;
-	text-align: center;
-	text-decoration: none;
-	color: #fff;
-	background:#0C88CA;
-	border-bottom:4px solid #005691;
-	border-radius: 4px;
-	transition: .0s;
+  margin-bottom: 15px;
 }
-
-#paginate:hover {
-  cursor: pointer;
-  text-decoration: none;
-  background:#005691;
-  transform: translate3d(0, 5px, 0);
-  transition: .0s;
-  border-bottom: none;
-}
-
 
 $link-color: #4b4f52;
 
@@ -107,13 +87,13 @@ $link-color: #4b4f52;
       a {
         color: $link-color;
         margin-right: 3px;
-        font-size: 15px;
+        font-size: 14px;
       }
     }
   }
   .techniques-body {
     .techniques-title {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: bold;
       margin-bottom: 4px;
       a {
@@ -148,4 +128,40 @@ $link-color: #4b4f52;
       text-decoration: none;
     }
   }
+}
+
+
+.button-blue {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  background: #0C88CA;
+  border-color: #0C88CA;
+  border: 1px solid;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: 0.3s;
+}
+.button-blue:hover {
+  background: #195a85;
+  color: #fff;
+  text-decoration: none;
+}
+
+.paginate-button {
+  cursor: pointer;
+  display: inline-block;
+  color: #0C88CA;
+  transition: 0.3s;
+  font-size: 35px;
+}
+
+.paginate-button:hover {
+  color: #195a85;
+}
+
+.more-list {
+  text-align: center;
 }

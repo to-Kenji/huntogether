@@ -1,13 +1,7 @@
-<div class="comment-list-header">
-  <span>コメント</span>
-  <i class="fas fa-comments"></i>
-  <span><%= comments.count %>件</span>
-</div>
-
 <ul class="comment-list">
   <% comments.each do |comment| %>
     <li id=comment-<%= comment.id %>>
-      <div class="comment d-flex">
+      <div class="comment">
         <div class="user-avatar">
           <%= link_to user_path(comment.user) do %>
             <% if comment.user.image? %>

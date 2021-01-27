@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   root 'toppages#index'
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: :show do
     member do
       get :favorites
       get :followings

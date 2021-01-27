@@ -1,6 +1,6 @@
 <div class="technique-header">
   <div class="technique-title">
-    <h2><%= @technique.title %></h2>
+    <h4><%= @technique.title %></h4>
   </div>
   <div class="created-time">
     投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
@@ -46,7 +46,7 @@
       </div>
     </div>
   
-    <button class="btn btn-block btn-secondary mb-2" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">
+    <button class="btn btn-block btn-secondary show-comment" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">
       コメント欄を開く
     </button>
     <div class="collapse" id="commentCollapse">
@@ -54,7 +54,10 @@
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <div id="comments-area">
+              <div class="comment-list-header" id="comment-list-header">
+                <%= render 'comments/comments_count' %>
+              </div>
+              <div id="comment-list-body">
                 <%= render 'comments/index', comments: @comments %>
               </div>
             </li>
@@ -70,63 +73,60 @@
   </div>
 
   <aside class="col-md-4">
-    <div class="card youtube">
-      <div class="card-body">
-        <% if @technique.youtube_url? %>
-          <div class="youtube-link">
-            <iframe src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="aside-content sticky-top">
+      <div class="card youtube">
+        <div class="card-body">
+          <% if @technique.youtube_url? %>
+            <div class="youtube-link">
+              <iframe src="https://www.youtube.com/embed/<%= @technique.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          <% else %>
+            <div class="no-youtube">動画はありません</div>
+          <% end %>
+        </div>  
+      </div>
+      <div class="card tags">
+        <div class="card-body">
+          <div class="monster">
+            <p>モンスター：</p>
+            <h5><span class="badge badge-secondary">
+              <%= @technique.monster.name %>
+            </span></h5>
           </div>
-        <% else %>
-          <div class="no-youtube">動画はありません</div>
-        <% end %>
-      </div>  
-    </div>
-    <div class="card tags">
-      <div class="card-body">
-        <div class="monster">
-          <p>モンスター：</p>
-          <h5><span class="badge badge-secondary">
-            <%= @technique.monster.name %>
-          </span></h5>
-        </div>
-        <div class="weapon">
-          <p>使用武器：</p>
-          <h5><span class="badge badge-pill badge-dark">
-            <%= @technique.weapon.name %>
-          </span></h5>
+          <div class="weapon">
+            <p>使用武器：</p>
+            <h5><span class="badge badge-pill badge-dark">
+              <%= @technique.weapon.name %>
+            </span></h5>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card user">
-      <div class="card-body">
-        <div class="user-info">
-          <div class="user-avatar">
-            <%= link_to user_path(@user) do %>
-              <% if @user.image? %>
-                <%= image_tag @user.image.thumb40.url, class: 'icon' %>
-              <% else %>
-                <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
+      <div class="card user">
+        <div class="card-body">
+          <div class="user-info">
+            <div class="user-avatar">
+              <%= link_to user_path(@user) do %>
+                <% if @user.image? %>
+                  <%= image_tag @user.image.thumb40.url, class: 'icon' %>
+                <% else %>
+                  <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="user-name">
+              <%= link_to user_path(@user) do %>
+                <%= @user.name %>
+              <% end %>
+            </div>
           </div>
-          <div class="user-name">
-            <%= link_to user_path(@user) do %>
-              <%= @user.name %>
-            <% end %>
+          <div class="follow-button">
+            <%= render 'relationships/follow_button' %>
           </div>
+            <div class="user-profile">
+              <%= simple_format(@user.profile) %>
+            </div>
         </div>
-        <div class="follow-button">
-          <%= render 'relationships/follow_button' %>
-        </div>
-          <div class="user-profile">
-            <%= simple_format(@user.profile) %>
-          </div>
       </div>
     </div>
   </aside>
 </div>
-
-
-
-
-

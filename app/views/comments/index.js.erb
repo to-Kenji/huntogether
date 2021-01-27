@@ -1,2 +1,3 @@
-$("#comments-area").html("<%= j(render 'comments/index', {comments: @comments })%>");
+$("#comment-list-header").html("<%= j(render 'comments_count')%>");
+$("#comment-list-body").html("<%= j(render 'comments/index', {comments: @comments })%>");
 $("textarea").val("");

@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  def index
-  end
 
   def show
     @user = User.find(params[:id])
-    @techniques = @user.techniques.recent.page(params[:page]).per(5)
+    @techniques = @user.techniques.recent.page(params[:page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js {render :techniques_paginate}
+    end
   end
 
   def favorites
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js {render :paginate}
+      format.js {render :favorites_paginate}
     end
   end
 end

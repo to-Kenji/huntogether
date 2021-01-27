@@ -36,8 +36,8 @@
     <div id="technique-list">
       <%= render 'techniques/techniques', techniques: @techniques %>
     </div>
-    <div class="more-list text-center">
-      <%= link_to_next_page @techniques, 'もっと見る', remote: true, id: 'paginate' %>
+    <div class="more-list">
+      <%= link_to_next_page @techniques, icon('fas', 'plus-circle'), remote: true, class: 'paginate-button', id: 'paginate' %>
     </div>
   </div>
 </div>

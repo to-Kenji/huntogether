@@ -6,7 +6,6 @@
   margin-bottom: 20px;
 }
 
-
 .main { //techniques#show
   margin-bottom: 15px;
   .technique-info {
@@ -50,41 +49,49 @@
   }
 }
 
-
-.user {
+aside {
   margin-bottom: 15px;
-  .card-body {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .user-info {
-    display: flex;
-    margin-bottom: 10px;
-    .user-avatar {
-      margin-right: 5px;
-    }
-    .user-name {
+  .user {
+    .card-body {
       display: flex;
-      align-items: center;
-      a {
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .user-info {
+      display: flex;
+      margin-bottom: 10px;
+      .user-avatar {
+        margin-right: 5px;
+      }
+      .user-name {
+        display: flex;
+        align-items: center;
+        a {
+          font-weight: bold;
+          text-decoration: none;
+          color: black;
+        }
       }
     }
-  }
-  .follow-button {
-    align-items: center;
-    display: flex;
-    margin-bottom: 10px;
+    .follow-button {
+      align-items: center;
+      display: flex;
+      margin-bottom: 10px;
+    }
   }
 }
 
+.show-comment {
+  margin-bottom: 15px;
+}
 .comment-card {
   margin-bottom: 15px;
   li {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.user-techniques-paginate ul {
+  justify-content: center;
 }

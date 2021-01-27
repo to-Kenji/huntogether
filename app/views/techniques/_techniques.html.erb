@@ -8,20 +8,22 @@
       <tr>
         <td>
           <div class="techniques-header">
-            <div class="avatarLink">
-              <%= link_to user_path(technique.user) do %>
-                <% if technique.user.image? %>
-                  <%= image_tag technique.user.image.thumb24.url, class: 'icon' %>
-                <% else %>
-                  <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+            <% unless controller.controller_name == 'users' && controller.action_name == 'show' %>
+              <div class="avatarLink">
+                <%= link_to user_path(technique.user) do %>
+                  <% if technique.user.image? %>
+                    <%= image_tag technique.user.image.thumb24.url, class: 'icon' %>
+                  <% else %>
+                    <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <%= link_to user_path(technique.user) do %>
-                <%= technique.user.name %>
-              <% end %>
-            </div>
+                <%= link_to user_path(technique.user) do %>
+                  <%= technique.user.name %>
+                <% end %>
+              </div>
+            <% end %>
             <div class="created_at">
-              が<%= technique.created_at.strftime('%Y年%m月%d日') %>に投稿
+              <%= technique.created_at.strftime('%Y年%m月%d日') %>
             </div>
           </div>
           <div class="techniques-body">
@@ -71,5 +73,10 @@
         </td>
       </tr>
     </table>
+  <% end %>
+  <% if controller.controller_name == 'users' && controller.action_name == 'show' %>
+    <div class="user-techniques-paginate">
+      <%= paginate techniques, remote: true %>
+    </div>
   <% end %>
 <% end %>
