@@ -165,3 +165,28 @@ $link-color: #4b4f52;
 .more-list {
   text-align: center;
 }
+
+
+#page-top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  background: black;
+  opacity: 0.6;
+  a {
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    font-size: 25px;
+    top: -13px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+  }
+}
