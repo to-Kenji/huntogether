@@ -1,0 +1,37 @@
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="image">
+        <% if @user.image? %>
+          <%= image_tag @user.image.thumb100.url, class: 'icon' %>
+        <% else %>
+          <%= image_tag "/assets/default.png", class: 'default-icon' %>
+        <% end %>
+      </div>
+      <h4><%= @user.name %></h4>
+      <div class="message">
+        <% if @user.id != current_user.id && @user.following?(current_user) %>
+          <span class="badge badge-secondary">フォローされています</span>
+        <% end %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <%= simple_format(@user.profile) %>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'プロフィールの編集', edit_user_registration_path(id: current_user.id), class: 'button-blue btn-block' %>
+      <% end %>
+      <div class="logout-button">
+        <% if current_user == @user %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'btn btn-outline-danger' %>
+        <% else %>
+          <%= render 'relationships/follow_button', user: @user %>
+        <% end %>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div id="relationship">
+        <%= render 'relationships/count', user: @user %>
+      </div>
+    </li>
+  </ul>
+</div>

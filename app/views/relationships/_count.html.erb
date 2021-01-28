@@ -1,0 +1,8 @@
+<div class="following-user">
+  <p><%= link_to 'フォロー', followings_user_path(user) %></p>
+  <div id="followings-count"><%= user.followings.count %></div>
+</div>
+<div class="follower-user">
+  <p><%= link_to 'フォロワー', followers_user_path(user) %></p>
+  <div id="followers-count"><%= user.followers.count %></div>
+</div>

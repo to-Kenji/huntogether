@@ -1,4 +1,4 @@
-<div class="card col-sm-6 offset-sm-3">
+<div class="card col-sm-6 offset-sm-3 mb-3">
   <div class="card-title text-center mt-2">ログイン</div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -11,12 +11,12 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン", class: 'btn btn-info btn-block mb-2' %>
+        <%= f.submit "ログイン", class: 'button-blue btn-block mb-2' %>
       </div>
     <% end %>
     
     <div class="guest-login-button text-center">
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-primary mb-2' %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-info mb-2' %>
     </div>
     <%= render "devise/shared/links" %>
     <%= link_to 'トップへ戻る', root_path %>

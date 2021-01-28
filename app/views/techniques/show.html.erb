@@ -46,7 +46,7 @@
       </div>
     </div>
   
-    <button class="btn btn-block btn-secondary show-comment" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">
+    <button class="button-blue btn-block show-comment" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">
       コメント欄を開く
     </button>
     <div class="collapse" id="commentCollapse">
@@ -120,11 +120,11 @@
             </div>
           </div>
           <div class="follow-button">
-            <%= render 'relationships/follow_button' %>
+            <%= render 'relationships/follow_button', user: @user %>
           </div>
-            <div class="user-profile">
-              <%= simple_format(@user.profile) %>
-            </div>
+          <div class="user-profile">
+            <%= simple_format(@user.profile) %>
+          </div>
         </div>
       </div>
     </div>

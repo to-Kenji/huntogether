@@ -1,4 +1,4 @@
-<div class="card col-sm-6 offset-sm-3">
+<div class="card col-sm-6 offset-sm-3 mb-3">
   <div class="card-title text-center mt-2">ユーザー情報編集</div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.text_area :profile, autofocus: true, :placeholder => '自己紹介文', class: "form-control" %>
+        <%= f.text_area :profile, autofocus: true, :placeholder => '自己紹介文', rows: 5, class: "form-control" %>
       </div>
 
       <div class="form-group">
@@ -26,7 +26,7 @@
 
 
       <div class="actions">
-        <%= f.submit "更新する", class: "btn btn-primary btn-block" %>
+        <%= f.submit "更新する", class: "button-blue btn-block" %>
       </div>
     <% end %>
 

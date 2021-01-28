@@ -3,7 +3,7 @@
 <% else %>
   <h2 style="text-align: center">新規投稿</h2>
 <% end %>
-<div class="card text-center">
+<div class="card text-center mb-3">
   <div class="card-body">
     <%= form_with(model: @technique, local: true) do |f| %>
       <%= render 'layouts/shared/error_messages', model: f.object %>
@@ -34,7 +34,7 @@
         <%= f.submit '更新', class: 'btn btn-success btn-lg mr-4' %>
         <%= link_to '削除', @technique, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: '削除します。よろしいですか?' } %>
       <% else %>
-        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+        <%= f.submit '投稿', class: 'button-blue btn-block' %>
       <% end %>
     <% end %>
   </div>

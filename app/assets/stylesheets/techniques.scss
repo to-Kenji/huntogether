@@ -57,27 +57,27 @@ aside {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-    }
-    .user-info {
-      display: flex;
-      margin-bottom: 10px;
-      .user-avatar {
-        margin-right: 5px;
-      }
-      .user-name {
+      .user-info {
         display: flex;
-        align-items: center;
-        a {
-          font-weight: bold;
-          text-decoration: none;
-          color: black;
+        margin-bottom: 10px;
+        .user-avatar {
+          margin-right: 5px;
+        }
+        .user-name {
+          display: flex;
+          align-items: center;
+          a {
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+          }
+        }
+        .follow-button {
+          align-items: center;
+          display: flex;
+          margin-bottom: 10px;
         }
       }
-    }
-    .follow-button {
-      align-items: center;
-      display: flex;
-      margin-bottom: 10px;
     }
   }
 }
