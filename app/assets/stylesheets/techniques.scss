@@ -4,6 +4,10 @@
 .technique-header {
   text-align: center;
   margin-bottom: 20px;
+  .created-time {
+    margin-bottom: 15px;
+    color: grey;
+  }
 }
 
 .main { //techniques#show
@@ -95,4 +99,16 @@ aside {
 
 .user-techniques-paginate ul {
   justify-content: center;
+}
+
+.technique-form {
+  text-align: center;
+  .card {
+    margin-bottom: 15px;
+    .action {
+      .edit-submit {
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

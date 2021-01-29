@@ -1,31 +1,29 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-sm navbar-light">
       <a class="navbar-brand" href="/">プロはん養成所</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item mr-2 mb-1">
-            <%= link_to '投稿する', new_technique_path, class:'btn btn-outline-info'%>
+          <li class="nav-item new">
+            <%= link_to '新規投稿', new_technique_path, class:'button-outline-green'%>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user-circle"></i>
+              <% if current_user.image? %>
+                <%= image_tag current_user.image.thumb40.url, class: 'icon' %>
+              <% else %>
+                <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
+              <% end %>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <%= link_to user_path(current_user), class: 'dropdown-item'  do %>
-                <% if current_user.image? %>
-                  <%= image_tag current_user.image.thumb40.url, class: 'icon' %>
-                <% else %>
-                  <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
-                <% end %>
-                マイページ
-              <% end %>
+              <a href="<%= user_path(current_user)%>" class="dropdown-item mypage">マイページ</a>
               <div class="dropdown-divider"></div>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'%>
+              <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item logout">ログアウト <i class="fas fa-sign-out-alt"></i>
+              </a>
             </div>
           </li>         
         <% else %>

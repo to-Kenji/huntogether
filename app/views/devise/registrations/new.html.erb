@@ -5,11 +5,11 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-group">
-        <%= f.text_field :name, autofocus: true, :placeholder => 'ハンターの名前', class: 'form-control' %>
+        <%= f.text_field :name, autofocus: true, :placeholder => 'ユーザー名', class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => 'メールアドレス', class: 'form-control' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'form-control' %>
       </div>
 
       <div class="form-group">
@@ -29,5 +29,6 @@
     <% end %>
 
     <%= render "devise/shared/links" %>
+    <%= link_to 'トップへ戻る', root_path %>
   </div>
 </div>

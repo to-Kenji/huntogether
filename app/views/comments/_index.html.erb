@@ -23,7 +23,7 @@
             </div>
             <% if current_user.id == comment.user.id %>
               <span class="trash-bottun">
-                <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
+                <%= link_to icon('fas', 'trash-alt'), technique_comment_path(comment.technique.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: 'trash-icon' %>
               </span>
             <% end %>
           </div>

@@ -2,7 +2,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
-    <%= f.text_field :name, autofocus: true, :placeholder => 'ハンターの名前', class: 'form-control' %>
+    <%= f.text_field :name, autofocus: true, :placeholder => 'ユーザー名', class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -22,6 +22,6 @@
   </div>
 
   <div class="guest-login mt-3 text-center">
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-info' %>
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button-outline-green' %>
   </div>
 <% end %>

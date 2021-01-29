@@ -16,17 +16,21 @@
       </div>
     </li>
     <li class="list-group-item">
-      <%= simple_format(@user.profile) %>
-      <% if @user.id == current_user.id %>
-        <%= link_to 'プロフィールの編集', edit_user_registration_path(id: current_user.id), class: 'button-blue btn-block' %>
-      <% end %>
-      <div class="logout-button">
-        <% if current_user == @user %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'btn btn-outline-danger' %>
-        <% else %>
-          <%= render 'relationships/follow_button', user: @user %>
-        <% end %>
+      <div class="user-profile">
+        <%= simple_format(@user.profile) %>
       </div>
+      <% if @user.id == current_user.id %>
+        <div class="current-user-buttons">
+          <div class="edit-button">
+            <%= link_to icon('fas', 'pencil-alt'), edit_user_registration_path(id: current_user.id), class:'edit-icon' %>
+          </div>
+          <div class="logout-button">
+            <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete, class: 'logout-icon' %>
+          </div>
+        </div>
+      <% else %>
+        <%= render 'relationships/follow_button', user: @user %>
+      <% end %>
     </li>
     <li class="list-group-item">
       <div id="relationship">

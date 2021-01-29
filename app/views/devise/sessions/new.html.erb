@@ -15,8 +15,8 @@
       </div>
     <% end %>
     
-    <div class="guest-login-button text-center">
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-info mb-2' %>
+    <div class="guest-login-button text-center mb-2">
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button-outline-green' %>
     </div>
     <%= render "devise/shared/links" %>
     <%= link_to 'トップへ戻る', root_path %>

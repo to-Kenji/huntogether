@@ -1,4 +1,4 @@
-<div class="card mt-3 mb-3">
+<div class="card rank-card">
   <div class="card-header text-center">
     <i class="fas fa-award"></i> お気に入りTOP5 <i class="fas fa-award"></i>
   </div>
@@ -6,9 +6,11 @@
     <ul class="list-group list-group-flush">
       <% @technique_ranks.each.with_index(1) do |technique_rank, i| %>
         <li class="list-group-item">
-          <div class="ranking d-flex justify-content-between">
-            <div class="rank">
+          <div class="ranking">
+            <div class="rank-number">
               <%= i %>
+            </div>
+            <div class="rank-title">
               <%= link_to technique_path(technique_rank) do %>
                 <%= truncate(technique_rank.title, length: 20) %>
               <% end %>

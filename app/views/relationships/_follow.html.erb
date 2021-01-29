@@ -1,4 +1,6 @@
 <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
   <%= hidden_field_tag :follow_id, user.id %>
-  <%= f.submit 'Follow', class:'btn btn-outline-info btn-sm' %>
+  <%= f.button :type => "submit", class: 'button-outline-blue button-sm' do  %>
+    Follow<i class="fas fa-plus"></i>
+  <% end %>
 <% end %>
