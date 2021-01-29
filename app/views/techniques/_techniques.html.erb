@@ -61,10 +61,10 @@
             </div>
             <% if technique.comments.exists? %>
               <div class="comment-count">
-                <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                <%= link_to technique_path(technique, anchor: 'comment-area') do %>
                   <i class="fas fa-comments"></i>
                 <% end %>
-                <%= link_to technique_path(technique, anchor: 'comments-area') do %>
+                <%= link_to technique_path(technique, anchor: 'comment-area') do %>
                   <%= technique.comments.count %>
                 <% end %>
               </div>
