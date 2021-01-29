@@ -14,8 +14,6 @@ class TechniquesController < ApplicationController
 
   def create
     @technique = current_user.techniques.build(technique_params)
-    url = params[:technique][:youtube_url].last(11)
-    @technique.youtube_url = url
     if @technique.save
       flash[:notice] = '投稿しました。'
       redirect_to @technique
@@ -27,7 +25,7 @@ class TechniquesController < ApplicationController
 
   def edit
   end
-
+  
   def update
     if @technique.update(technique_params)
       flash[:notice] = '更新しました。'
