@@ -51,4 +51,5 @@ class TechniquesController < ApplicationController
   def set_technique
     @technique = Technique.find(params[:id])
   end
+
 end
