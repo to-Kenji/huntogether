@@ -4,8 +4,11 @@
   </div>
   <div class="col-md-7">
     <h5 id="paginateTop">全ての投稿（<%= @user.techniques.count %>）</h5>
-    <div id="user-techniques">
+    <div id="technique-list">
       <%= render 'techniques/techniques', techniques: @techniques %>
+    </div>
+    <div class="more-list">
+      <%= link_to_next_page @techniques, icon('fas', 'plus-circle'), remote: true, class: 'paginate-button', id: 'paginate' %>
     </div>
   </div>
 </div>

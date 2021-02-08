@@ -74,9 +74,4 @@
       </tr>
     </table>
   <% end %>
-  <% if controller.controller_name == 'users' && controller.action_name == 'show' %>
-    <div class="user-techniques-paginate">
-      <%= paginate techniques, remote: true %>
-    </div>
-  <% end %>
 <% end %>

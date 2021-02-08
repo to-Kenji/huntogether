@@ -24,13 +24,12 @@
         画像を削除
       </div>
 
-
       <div class="actions">
-        <%= f.submit "更新する", class: "button-blue btn-block" %>
+        <%= f.submit "更新する", class: "button button-md button-blue btn-block" %>
       </div>
     <% end %>
 
-    <%= link_to "戻る", :back %>
+    <%= link_to "戻る", user_path(current_user) %>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), remote: true, method: :delete) do |f| %>
   <%= hidden_field_tag :follow_id, user.id %>
-  <%= f.button :type => "submit", class: 'button-blue button-sm' do  %>
+  <%= f.button :type => "submit", class: 'button button-blue button-sm' do  %>
     Following<i class="fas fa-minus-circle"></i>
   <% end %>
 <% end %>

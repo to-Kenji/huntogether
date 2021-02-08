@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Huntogether</title>
+    <title>プロはん養成所</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,14 +20,14 @@
   <body>
     <%= render 'layouts/shared/navbar' %>
     <div class="container">
-
       <%= render 'layouts/shared/flash_messages' %>
-      
       <%= yield %>
       <div id="page-top">
         <a href=""><i class="fas fa-angle-double-up"></i></a>
       </div>
     </div>
-    <%= render 'layouts/shared/footer'%>
   </body>
+  <footer>
+    <%= render 'layouts/shared/footer'%>
+  </footer>
 </html>

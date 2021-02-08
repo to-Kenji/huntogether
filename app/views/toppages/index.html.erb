@@ -1,16 +1,14 @@
 <% unless user_signed_in? %>
   <%= render 'welcome' %>
 <% end %>
-<div class="row justify-content-between">
+<div class="row">
   <div class="menu col-md-5">
-    <aside class="sticky-top">
-      <div class="search-form">
-        <%= render 'layouts/shared/search_form', content: 'All', url: root_path %>
-      </div>
-      <div class="ranking">
-        <%= render 'layouts/shared/ranking' %>
-      </div>
-    </aside>
+    <div class="search-form">
+      <%= render 'layouts/shared/search_form', content: 'All', url: root_path %>
+    </div>
+    <div class="ranking">
+      <%= render 'layouts/shared/ranking' %>
+    </div>
   </div>
   <div class="techniques col-md-7">
     <ul class="nav nav-tabs">

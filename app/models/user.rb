@@ -16,8 +16,11 @@ class User < ApplicationRecord
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
 
+ 
   mount_uploader :image, ImageUploader
 
+  include Paginate
+  
   def already_liked?(technique)
     self.likes.exists?(technique_id: technique.id)
   end

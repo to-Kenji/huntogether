@@ -19,131 +19,108 @@
 
 $link-color: #4b4f52;
 
+.button {
+  display: inline-block;
+  border-radius: 5px;
+  border: 2px solid;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: 0.3s; 
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .button-sm {
   font-size: 12px;
   padding: 3px;
 }
 
-.button-blue {
-  display: inline-block;
+.button-md {
   padding: 5px;
-  border-radius: 5px;
+}
+
+.button-blue {
   color: #fff;
   background: #0C88CA;
   border-color: #0C88CA;
-  border: 2px solid;
-  text-decoration: none;
-  vertical-align: middle;
-  transition: 0.3s;
 }
+
 .button-blue:hover {
-  cursor: pointer;
   background: #195a85;
-  text-decoration: none;
-}
-
-.button-blue:focus {
-  outline: none;
-}
-
-.button-outline-blue {
-  display: inline-block;
-  border-radius: 5px;
-  color: #0C88CA;
-  border-color: #0C88CA;
-  background: #fff;
-  border: 1px solid;
-  text-decoration: none;
-  vertical-align: middle;
-  transition: 0.3s;
-}
-
-.button-outline-blue:hover {
-  cursor: pointer;
-  background: #0C88CA;
-  border-color: #0C88CA;
-  color: #fff;
-  text-decoration: none;
-}
-
-.button-outline-blue:focus {
-  outline: none;
+  border-color: #195a85;
 }
 
 .button-red {
-  display: inline-block;
-  padding: 5px;
-  border-radius: 5px;
   color: #fff;
   background: #e44c65;
   border-color: #e44c65;
-  text-decoration: none;
-  vertical-align: middle;
-  transition: 0.3s;
 }
 
 .button-red:hover {
-  cursor: pointer;
   background: #992538;
-  text-decoration: none;
+  border-color: #992538;
   color: #fff;
 }
-
-.edit-icon {
-  color: #40C659;
-  border: 2px solid;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.edit-icon:hover {
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-  background: #40C659;
-}
-
-.logout-icon {
-  color: #e44c65;
-  border: 2px solid;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.logout-icon:hover {
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-  background: #e44c65;
-}
-
 
 .button-outline-green {
-  display: inline-block;
-  padding: 5px;
-  border-radius: 5px;
   color: #40C659;
-  border: 2px solid;
-  text-decoration: none;
-  vertical-align: middle;
-  transition: 0.3s;
   background: #fff;
 }
 
 .button-outline-green:hover {
-  cursor: pointer;
   color: #fff;
   border-color: #40C659;
-  text-decoration: none;
   background: #40C659;
 }
 
-.button-outline-green:focus {
-  outline: none;
+.button-outline-blue {
+  color: #0C88CA;
+  border-color: #0C88CA;
+  background: #fff;
+  border: 1px solid;
+}
+
+.button-outline-blue:hover {
+  background: #0C88CA;
+  border-color: #0C88CA;
+  color: #fff;
+}
+
+.button-icon {
+  border: 2px solid;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.button-icon:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button-icon-edit {
+  color: #40C659;
+}
+
+.button-icon-edit:hover {
+  background: #40C659;
+}
+
+.button-icon-logout {
+  color: #e44c65;
+}
+
+.button-icon-logout:hover {
+  background: #e44c65;
 }
 
 .paginate-button {
@@ -214,12 +191,21 @@ $link-color: #4b4f52;
   }
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 130px;
+}
 
 footer {
   width: 100%;
-  height: 125px;
+  height: 130px;
   background-color: #3e3e3e;
   text-align: center;
+  position: absolute;
+  bottom: 0;
   .copywright {
     font-size: 14px;
     padding-top: 5px;

@@ -34,15 +34,15 @@
         <% if controller.action_name == 'edit' %>
         <div class="action">
           <div class="edit-submit">
-            <%= f.submit 'この内容で保存', class: 'button-blue btn-block' %>
+            <%= f.submit 'この内容で保存', class: 'button button-md button-blue btn-block' %>
           </div>
           <div class="delete">
-            <%= link_to '投稿を削除', @technique, method: :delete, class: "button-red", data: { confirm: '削除します。よろしいですか?' } %>
+            <%= link_to '投稿を削除', @technique, method: :delete, class: "button button-red button-md", data: { confirm: '削除します。よろしいですか?' } %>
           </div>
         </div>
         <% else %>
         <div class="action">
-          <%= f.submit '投稿', class: 'button-blue btn-block' %>
+          <%= f.submit '投稿', class: 'button button-blue button-md btn-block' %>
         </div>
         <% end %>
       <% end %>

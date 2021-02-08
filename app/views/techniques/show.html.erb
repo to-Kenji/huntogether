@@ -7,7 +7,7 @@
   </div>
   <% if @technique.user.id == current_user.id %>
     <div class="edit">
-      <%= link_to icon('fas', 'pencil-alt'), edit_technique_path(@technique), class: 'edit-icon' %>
+      <%= link_to icon('fas', 'pencil-alt'), edit_technique_path(@technique), class: 'button-icon button-icon-edit' %>
     </div>
   <% end %>
 </div>
@@ -42,7 +42,7 @@
       </div>
     </div>
   
-    <button class="button-blue btn-block show-comment" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse" id="comment-area">
+    <button class="button button-sm button-blue btn-block show-comment" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse" id="comment-area">
       コメント欄を開く
     </button>
     <div class="collapse" id="commentCollapse">

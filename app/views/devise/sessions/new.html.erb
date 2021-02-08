@@ -11,12 +11,12 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン", class: 'button-blue btn-block mb-2' %>
+        <%= f.submit "ログイン", class: 'button button-md button-blue btn-block mb-2' %>
       </div>
     <% end %>
     
     <div class="guest-login-button text-center mb-2">
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button-outline-green' %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button button-md button-outline-green' %>
     </div>
     <%= render "devise/shared/links" %>
     <%= link_to 'トップへ戻る', root_path %>
