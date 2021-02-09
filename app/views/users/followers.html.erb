@@ -4,31 +4,11 @@
   </div>
   <div class="relational-list col-md-7">
     <h5>フォローされています</h5>
-    <table class="table">
-      <% @followers.each do |user| %>
-        <tbody>
-          <tr>
-            <td>
-              <div class="user-info">
-                <div class="user-avatar">
-                  <%= link_to user_path(user) do %>
-                    <% if user.image? %>
-                      <%= image_tag user.image.thumb40.url, class: 'icon' %>
-                    <% else %>
-                      <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="user-name">
-                  <%= link_to user_path(user) do %>
-                    <%= user.name %>
-                  <% end %>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
+    <div id="users_list">
+      <%= render 'users/users', users: @followers %>
+    </div>
+    <div class="more-list">
+      <%= link_to_next_page @followers, icon('fas', 'plus-circle'), remote: true, class: 'paginate-button', id: 'paginate' %>
+    </div>
   </div>
 </div>

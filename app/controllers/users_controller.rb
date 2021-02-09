@@ -23,11 +23,19 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.paginate(params, 10)
+    @followings = @user.followings.paginate(params, 3)
+    respond_to do |format|
+      format.html
+      format.js {render :followings_paginate}
+    end
   end
 
   def followers
-    @followers = @user.followers.paginate(params, 10)
+    @followers = @user.followers.paginate(params, 3)
+    respond_to do |format|
+      format.html
+      format.js {render :followers_paginate}
+    end
   end
 
   private

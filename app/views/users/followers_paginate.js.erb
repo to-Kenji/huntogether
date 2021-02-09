@@ -1,0 +1,2 @@
+$("#users_list").append("<%= j(render 'users', users: @followers) %>");
+$("#paginate").replaceWith("<%= j(link_to_next_page(@followers, icon('fas', 'plus-circle'), remote:true, class: 'paginate-button', id: 'paginate'))%>");

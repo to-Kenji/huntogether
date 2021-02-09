@@ -1,0 +1,26 @@
+<% users.each do |user| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <div class="user-info">
+            <div class="user-avatar">
+              <%= link_to user_path(user) do %>
+                <% if user.image? %>
+                  <%= image_tag user.image.thumb40.url, class: 'icon' %>
+                <% else %>
+                  <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="user-name">
+              <%= link_to user_path(user) do %>
+                <%= user.name %>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
