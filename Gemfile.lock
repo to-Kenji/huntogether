@@ -242,7 +242,7 @@ DEPENDENCIES
   kaminari-bootstrap
   listen (~> 3.2)
   mini_magick
-  mysql2 (>= 0.4.4)
+  mysql2 (>= 0.5.3)
   pry-byebug
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
