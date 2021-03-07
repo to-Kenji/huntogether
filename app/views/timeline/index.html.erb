@@ -1,22 +1,25 @@
 <div class="row">
   <div class="menu col-md-5">
     <div class="search-form">
-      <%= render 'layouts/shared/search_form', content: 'Following', url: timeline_index_path %>
+      <%= render 'layouts/shared/search_form', content: 'フォロー', url: timeline_index_path %>
     </div>
     <div class="ranking">
       <%= render 'layouts/shared/ranking' %>
+    </div>
+    <div class="advertise">
+      <%= render 'layouts/shared/adv_card' %>
     </div>
   </div>
   <div class="techniques col-md-7">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="<%= root_path %>">All</a>
+        <a class="nav-link" href="<%= root_path %>">全体</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="<%= timeline_index_path %>">Following</a>
+        <a class="nav-link active" href="<%= timeline_index_path %>">フォロー</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= favorites_user_path(current_user) %>">Favorites</a>
+        <a class="nav-link" href="<%= favorites_user_path(current_user) %>">お気に入り</a>
       </li>
     </ul>
     <div id="technique-list">

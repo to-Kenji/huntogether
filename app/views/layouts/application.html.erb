@@ -13,15 +13,15 @@
 
   <body>
     <%= render 'layouts/shared/navbar' %>
-    <div class="container">
+    <div class="container content-main">
       <%= render 'layouts/shared/flash_messages' %>
       <%= yield %>
       <div id="page-top">
         <a href=""><i class="fas fa-angle-double-up"></i></a>
       </div>
     </div>
+    <footer>
+      <%= render 'layouts/shared/footer'%>
+    </footer>
   </body>
-  <footer>
-    <%= render 'layouts/shared/footer'%>
-  </footer>
 </html>
