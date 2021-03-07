@@ -14,7 +14,7 @@
                   <% if technique.user.image? %>
                     <%= image_tag technique.user.image.thumb24.url, class: 'icon' %>
                   <% else %>
-                    <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+                    <%= image_tag asset_path("default.png"), class: 'default-icon-sm' %>
                   <% end %>
                 <% end %>
                 <%= link_to user_path(technique.user) do %>
