@@ -2,7 +2,7 @@
   <% if current_user.image? %>
     <%= image_tag current_user.image.thumb40.url, class: 'icon' %>
   <% else %>
-    <%= image_tag "/assets/default.png", class: 'default-icon-md' %>
+    <%= image_tag asset_path("default.png"), class: 'default-icon-md' %>
   <% end %>
   <span>コメントを入力</span>
 </div>
