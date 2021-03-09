@@ -6,6 +6,6 @@ if Rails.env.production?
       aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
       region: "ap-northeast-1"
     }
-    config.fog_directory = "huntogether-prod-bucket"
+    config.fog_directory = "huntogether-bucket"
   end
 end
