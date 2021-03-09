@@ -22,12 +22,3 @@ end
 ].each do |monster|
   Monster.create(name: monster)
 end
-
-15.times do |n|
-  User.create(
-    email: "example#{n}@example.com",
-    password: "123123",
-    name: "テストユーザー_#{n}",
-    profile: "こんにちは。私はテストユーザーです。"
-  )
-end

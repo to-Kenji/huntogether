@@ -58,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    flash[:notice] = '登録完了！「プロフィールの編集」からプロフィール画像と自己紹介文を登録できます。'
+    flash[:notice] = '登録完了！緑のアイコンからプロフィール画像と自己紹介文を登録できます。'
     user_path(resource)
   end
 
