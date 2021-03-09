@@ -7,7 +7,7 @@
             <% if comment.user.image? %>
               <%= image_tag comment.user.image.thumb24.url, class: 'icon' %>
             <% else %>
-              <%= image_tag "/assets/default.png", class: 'default-icon-sm' %>
+              <%= image_tag asset_path("default.png"), class: 'default-icon-sm' %>
             <% end %>
           <% end %>
         </div>
