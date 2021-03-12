@@ -19,6 +19,78 @@
 
 $link-color: #4b4f52;
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  a {
+    color: $link-color;
+    cursor: pointer;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $link-color;
+  }
+  a:active {
+    text-decoration: none;
+    color: $link-color;
+  }
+}
+
+.gray {
+  background-color: #f9f9f9;
+}
+
+.content-main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+  height: 130px;
+  background-color: #3e3e3e;
+  text-align: center;
+  bottom: 0;
+  .copywright {
+    font-size: 14px;
+    padding-top: 5px;
+    color: #b3b3b3;
+  }
+  .footer-content {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    .contact a {
+      color: #b3b3b3;
+    }
+    .my-information a {
+      color: #b3b3b3;
+    }
+  }
+  p {
+    margin-bottom: 0;
+    margin-top: 10px;
+    .title-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+}
+
+.nav-tabs .nav-item .nav-active {
+  color: #495057;
+  background-color: #f9f9f9;
+  border-color: #dee2e6
+}
+.card .card-header {
+  background-color: #e3f2fd;
+}
+
 .button {
   display: inline-block;
   border-radius: 5px;
@@ -178,67 +250,15 @@ $link-color: #4b4f52;
         border-radius: 30px;
       }
     }
-    .dropdown .dropdown-menu .dropdown-item:hover {
-      background-color: #e3f2fd;
-    }
-    .dropdown .dropdown-menu .dropdown-item:active {
-      background-color: #e3f2fd;
-    }
-    .dropdown .dropdown-menu .dropdown-item a {
-      color: $link-color;
-      text-decoration: none;
-    }
-  }
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.content-main {
-  flex: 1;
-}
-
-footer {
-  width: 100%;
-  height: 130px;
-  background-color: #3e3e3e;
-  text-align: center;
-  bottom: 0;
-  .copywright {
-    font-size: 14px;
-    padding-top: 5px;
-    color: #b3b3b3;
-  }
-  .footer-content {
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    .contact a {
-      color: #b3b3b3;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .my-information a {
-      color: #b3b3b3;
-      cursor: pointer;
-      text-decoration: none;
-    }
-  }
-  p {
-    margin-bottom: 0;
-    margin-top: 10px;
-    .title-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
+    .dropdown .dropdown-menu {
+      background-color: #f9f9f9;
+      .dropdown-item:hover {
+        background-color: #f9f9f9;
+      }
+      .dropdown-item:active {
+        background-color: #f9f9f9;
+        color: $link-color;
+      }
     }
   }
 }
@@ -287,7 +307,6 @@ footer {
       display: flex;
       align-items: center;
       a {
-        color: $link-color;
         margin-right: 3px;
         font-size: 14px;
       }
@@ -298,12 +317,6 @@ footer {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 4px;
-      a {
-        color: $link-color;
-      }
-      #youtubeIcon {
-        text-decoration: none;
-      }
     }
     .details {
       display: flex;
@@ -324,11 +337,6 @@ footer {
   .bookmark-count {
     margin-right: 10px;
   }
-  .comment-count {
-    a {
-      text-decoration: none;
-    }
-  }
 }
 
 .rank-card {
@@ -342,9 +350,6 @@ footer {
     }
     .rank-title {
       margin-right: 10px;
-      a {
-        color: $link-color;
-      }
     }
   }
 }
