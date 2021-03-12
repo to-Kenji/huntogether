@@ -63,6 +63,7 @@
 - AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront)
 
 ## インフラ構成図
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/70895253/110918712-cf1ed180-835e-11eb-9abb-8fb2669a2f40.png)
 
 ## 機能一覧
 - ユーザー登録、ログイン、ログアウト機能(devise)
