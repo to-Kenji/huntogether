@@ -100,23 +100,25 @@
       <div class="card user">
         <div class="card-body">
           <div class="user-info">
-            <div class="user-avatar">
-              <%= link_to user_path(@user) do %>
-                <% if @user.image? %>
-                  <%= image_tag @user.image.thumb40.url, class: 'icon' %>
-                <% else %>
-                  <%= image_tag asset_path("default.png"), class: 'default-icon-md' %>
+            <div class="user-link">
+              <div class="user-avatar">
+                <%= link_to user_path(@user) do %>
+                  <% if @user.image? %>
+                    <%= image_tag @user.image.thumb40.url, class: 'icon' %>
+                  <% else %>
+                    <%= image_tag asset_path("default.png"), class: 'default-icon-md' %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
+              <div class="user-name">
+                <%= link_to user_path(@user) do %>
+                  <%= @user.name %>
+                <% end %>
+              </div>
             </div>
-            <div class="user-name">
-              <%= link_to user_path(@user) do %>
-                <%= @user.name %>
-              <% end %>
+            <div class="follow-button">
+              <%= render 'relationships/follow_button', user: @user %>
             </div>
-          </div>
-          <div class="follow-button">
-            <%= render 'relationships/follow_button', user: @user %>
           </div>
           <div class="user-profile">
             <%= simple_format(@user.profile) %>
