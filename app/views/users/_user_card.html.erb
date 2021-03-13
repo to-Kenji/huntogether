@@ -3,9 +3,9 @@
     <li class="list-group-item">
       <div class="image">
         <% if @user.image? %>
-          <%= image_tag @user.image.thumb100.url, class: 'icon' %>
+          <%= image_tag @user.image.url, class: 'avatar' %>
         <% else %>
-          <%= image_tag asset_path("default.png"), class: 'default-icon' %>
+          <%= image_tag asset_path("default.png"), class: 'avatar default-avatar' %>
         <% end %>
       </div>
       <h4><%= @user.name %></h4>

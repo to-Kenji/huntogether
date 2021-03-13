@@ -7,9 +7,9 @@
             <div class="user-avatar">
               <%= link_to user_path(user) do %>
                 <% if user.image? %>
-                  <%= image_tag user.image.thumb40.url, class: 'icon' %>
+                  <%= image_tag user.image.url, class: 'avatar avatar-md' %>
                 <% else %>
-                  <%= image_tag asset_path("default.png"), class: 'default-icon-md' %>
+                  <%= image_tag asset_path("default.png"), class: 'avatar avatar-md' %>
                 <% end %>
               <% end %>
             </div>
