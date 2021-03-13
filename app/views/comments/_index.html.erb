@@ -5,9 +5,9 @@
         <div class="user-avatar">
           <%= link_to user_path(comment.user) do %>
             <% if comment.user.image? %>
-              <%= image_tag comment.user.image.thumb24.url, class: 'icon' %>
+              <%= image_tag comment.user.image.url, class: 'avatar avatar-sm' %>
             <% else %>
-              <%= image_tag asset_path("default.png"), class: 'default-icon-sm' %>
+              <%= image_tag asset_path("default.png"), class: 'avatar avatar-sm' %>
             <% end %>
           <% end %>
         </div>
