@@ -68,6 +68,7 @@
 - Puma
 - Capistrano
 - AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront)
+- RSpec
 
 ## インフラ構成図
 ![Untitled Diagram (1)](https://user-images.githubusercontent.com/70895253/110918712-cf1ed180-835e-11eb-9abb-8fb2669a2f40.png)
