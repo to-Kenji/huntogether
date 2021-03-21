@@ -25,7 +25,7 @@
             <%= link_to icon('fas', 'pencil-alt'), edit_user_registration_path(id: current_user.id), class:'button-icon button-icon-edit' %>
           </div>
           <div class="logout-button">
-            <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete, class: 'button-icon button-icon-logout' %>
+            <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete, class: 'button-icon button-icon-logout', id: 'logout-icon-link' %>
           </div>
         </div>
       <% else %>
