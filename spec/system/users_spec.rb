@@ -57,7 +57,19 @@ RSpec.feature 'Users', type: :system do
     end
 
     context 'when update profile image' do
-      
+      scenario 'is valid with new image' do
+        visit edit_user_registration_path
+        attach_file 'プロフィール画像', "#{Rails.root}/spec/factories/profile_image.png"
+        click_button '更新する'
+        expect(page).to have_content 'アカウント情報を変更しました。'
+        expect(page).to have_selector("img[src$='profile_image.png']")
+
+        visit edit_user_registration_path
+        check 'user_remove_image'
+        click_button '更新する'
+        expect(page).to have_content 'アカウント情報を変更しました。'
+        expect(page).to have_selector("img[src$='default-5f155e4654cd604e811fb074b3a32af28a3c47918eab81a476a8d075bb171d05.png']")
+      end
     end
   end
 end
