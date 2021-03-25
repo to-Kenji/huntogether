@@ -1,18 +1,31 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :system do
-  before do
-    @user = User.create!(
-      name: 'kenji',
-      email: 'kenji@example.com',
-      password: 'password',
-      password_confirmation: 'password',
-      profile: 'こんにちは',
-    )
-    sign_in @user
-  end
+  feature 'CREATE' do
+    scenario 'is valid' do
+      visit root_path
+      fill_in 'ユーザー名', with: 'kenji'
+      fill_in 'メールアドレス', with: 'kenji@example.com'
+      fill_in 'パスワード(6文字以上)', with: 'password'
+      fill_in 'パスワード確認', with: 'password'
+      click_button 'ユーザー登録'
 
+      expect(page).to have_content '登録完了！'
+    end
+  end
+  
   feature 'EDIT' do
+    before do
+      @user = User.create!(
+        name: 'kenji',
+        email: 'kenji@example.com',
+        password: 'password',
+        password_confirmation: 'password',
+        profile: 'こんにちは',
+      )
+      sign_in @user
+    end
+
     context 'when update name and profile' do
       scenario 'is valid' do
         visit edit_user_registration_path
@@ -26,7 +39,7 @@ RSpec.feature 'Users', type: :system do
         expect(page).to have_content 'Hello World!'
       end
     end
-    
+
     context 'when update email and login' do
       background do
         @old_email = 'kenji@example.com'
@@ -56,7 +69,7 @@ RSpec.feature 'Users', type: :system do
       end
     end
 
-    context 'when update profile image' do
+    xcontext 'when update profile image' do
       scenario 'is valid with new image' do
         visit edit_user_registration_path
         attach_file 'プロフィール画像', "#{Rails.root}/spec/factories/profile_image.png"
