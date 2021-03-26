@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :system do
-  xfeature 'CREATE' do
+  feature 'CREATE' do
     scenario 'is valid' do
       visit root_path
       fill_in 'ユーザー名', with: 'kenji'
@@ -14,7 +14,7 @@ RSpec.feature 'Users', type: :system do
     end
   end
   
-  xfeature 'EDIT' do
+  feature 'EDIT' do
     before do
       @user = User.create!(
         name: 'kenji',
@@ -69,7 +69,7 @@ RSpec.feature 'Users', type: :system do
       end
     end
 
-    xcontext 'when update profile image' do
+    context 'when update profile image' do
       scenario 'is valid with new image' do
         visit edit_user_registration_path
         attach_file 'プロフィール画像', "#{Rails.root}/spec/factories/profile_image.png"

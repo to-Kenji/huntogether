@@ -9,6 +9,8 @@ class Technique < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true
+  VALID_URL_REGEX = /\Ahttps:\/\/[\w\.]+\/[\w+=?\-]+\z/
+  validates :youtube_url, allow_blank: true, length: { maximum: 43 }, format: { with: VALID_URL_REGEX }
 
   before_save :slugify
 
