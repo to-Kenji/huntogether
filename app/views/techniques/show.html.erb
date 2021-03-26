@@ -7,7 +7,7 @@
   </div>
   <% if @technique.user.id == current_user.id %>
     <div class="edit">
-      <%= link_to icon('fas', 'pencil-alt'), edit_technique_path(@technique), class: 'button-icon button-icon-edit' %>
+      <%= link_to icon('fas', 'pencil-alt'), edit_technique_path(@technique), class: 'button-icon button-icon-edit', id: 'technique-edit-icon' %>
     </div>
   <% end %>
 </div>
