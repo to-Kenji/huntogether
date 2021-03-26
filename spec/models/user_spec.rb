@@ -98,7 +98,7 @@ RSpec.describe User, type: :model do
         user_id: user.id,
         weapon_id: weapon.id,
         monster_id: monster.id,
-        youtube_url: "https://youtu.be/-YG2pgoghVA",
+        youtube_url: "",
       )
       Like.create(user_id: user2.id, technique_id: @technique.id)
     end
