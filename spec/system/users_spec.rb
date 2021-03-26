@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :system do
-  feature 'CREATE' do
+  xfeature 'CREATE' do
     scenario 'is valid' do
       visit root_path
       fill_in 'ユーザー名', with: 'kenji'
@@ -14,7 +14,7 @@ RSpec.feature 'Users', type: :system do
     end
   end
   
-  feature 'EDIT' do
+  xfeature 'EDIT' do
     before do
       @user = User.create!(
         name: 'kenji',
