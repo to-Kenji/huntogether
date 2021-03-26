@@ -4,7 +4,39 @@
 世界中で大人気の日本が誇る名作ゲームシーリズ、
 「モンスターハンターワールド　アイスボーン」に特化した、  
 ***「もっと上手くなりたいプレイヤーのための技術共有サービス」です。***  
+  
+## 使用技術
+- Ruby 2.7.1
+- Ruby on Rails 6.0.3.4
+- Javascript
+- jQuery
+- Bootstrap 4.6.0
+- MariaDB 10.5.8
+- Nginx
+- Puma
+- Capistrano
+- AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront)
+- RSpec(単体テスト、統合テスト)
+  
+## インフラ構成図
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/70895253/110918712-cf1ed180-835e-11eb-9abb-8fb2669a2f40.png)
 
+## 機能一覧
+- ユーザー登録、ログイン、ログアウト機能(devise)
+- ユーザー編集機能
+  - プロフィール画像投稿、削除機能(CarrierWave, MiniMagick)
+- 投稿機能
+  - youtube動画の埋め込み機能
+- いいね機能(Ajax)
+- お気に入り機能(Ajax)
+  - お気に入りランキング機能
+- フォロー機能(Ajax)
+- コメント機能(Ajax)
+- ページネーション機能(kaminari)
+  - 「もっと見る」ボタン(Ajax)
+- 検索機能(ransack)
+- ページトップに戻るボタン
+  
 ## まずはこのゲームについて簡単にご説明します。
 プレイヤーは１人のハンターとなり、そのハンターを操作しながら数々のモンスターを狩るアクションゲームです。  
 ハンターが使用できる武器には様々な種類があり、それぞれに違った特性やアクションが存在します。  
@@ -56,35 +88,3 @@
 - youtube動画には、「ブラウザのURL」と「動画の共有タブにある埋め込みリンク」が存在し、ブラウザのURLだと通常は埋め込みとしては機能しません。インスタンスメソッドを定義し、DBへの保存時にそれを実行することで、ユーザーがどちらのリンクを使用しても正しく埋め込みとして機能するように工夫しました。**こちらは恐縮ながらQiitaに投稿しました**。[こちら](https://qiita.com/TO-TO/items/a81d55908e99ba493d99)
 - 一定以上画面をスクロールすると表示される「トップに戻るボタン」をjQueryで実装しました。
 - 保守管理のしやすさの為、**機能ごとの関心を分離**して細かくコンポーネント化することを意識しました。
-
-## 使用技術
-- Ruby 2.7.1
-- Ruby on Rails 6.0.3.4
-- Javascript
-- jQuery
-- Bootstrap 4.6.0
-- MariaDB 10.5.8
-- Nginx
-- Puma
-- Capistrano
-- AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront)
-- RSpec
-
-## インフラ構成図
-![Untitled Diagram (1)](https://user-images.githubusercontent.com/70895253/110918712-cf1ed180-835e-11eb-9abb-8fb2669a2f40.png)
-
-## 機能一覧
-- ユーザー登録、ログイン、ログアウト機能(devise)
-- ユーザー編集機能
-  - プロフィール画像投稿、削除機能(CarrierWave, MiniMagick)
-- 投稿機能
-  - youtube動画の埋め込み機能
-- いいね機能(Ajax)
-- お気に入り機能(Ajax)
-  - お気に入りランキング機能
-- フォロー機能(Ajax)
-- コメント機能(Ajax)
-- ページネーション機能(kaminari)
-  - 「もっと見る」ボタン(Ajax)
-- 検索機能(ransack)
-- ページトップに戻るボタン
