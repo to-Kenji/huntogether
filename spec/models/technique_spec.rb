@@ -85,5 +85,12 @@ RSpec.describe Technique, type: :model do
         expect(technique.errors[:youtube_url]).to include('は不正な値です')
       end
     end
+
+    describe 'instance method' do
+      it 'is valid' do
+        technique.slugify
+        expect(technique.youtube_url).to eq '-YG2pgoghVA'
+      end
+    end
   end
 end
