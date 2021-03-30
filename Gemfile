@@ -66,3 +66,4 @@ gem 'mini_magick'
 gem 'pry-byebug', group: :development
 gem 'dotenv-rails'
 gem 'fog-aws'
+gem 'mimemagic', '~> 0.3.0'
