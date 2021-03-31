@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:10.5
     volumes:
-      - ./tmp/db:/var/lib/mysql/data:cached
+      - dbvolume:/var/lib/mysql
     env_file: development.env
   web:
     build: .
@@ -17,3 +17,6 @@ services:
     env_file: development.env
     stdin_open: true
     tty: true
+  
+volumes:
+  dbvolume:
