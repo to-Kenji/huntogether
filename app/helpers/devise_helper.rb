@@ -1,12 +1,10 @@
 module DeviseHelper
   def bootstrap_alert(key)
-    case key
-    when "alert"
-      "warning"
-    when "notice"
-      "success"
-    when "error"
-      "danger"
-    end
+    lists = {
+      'alert' => 'warning',
+      'notice' => 'success',
+      'error' => 'danger'
+    }
+    lists[key]
   end
 end

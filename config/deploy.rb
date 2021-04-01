@@ -1,16 +1,16 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock '~> 3.16.0'
 
-set :application, "huntogether"
-set :repo_url, "https://github.com/to-Kenji/huntogether.git"
+set :application, 'huntogether'
+set :repo_url, 'https://github.com/to-Kenji/huntogether.git'
 set :rbenv_ruby, File.read('.ruby-version').strip
-set :branch, "main"
+set :branch, 'main'
 
 set :nginx_config_name, "#{fetch(:application)}.conf"
-set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
+set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
 
-append :linked_files, "config/master.key"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
+append :linked_files, 'config/master.key'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :followings, :followers]
+  before_action :set_user, only: %i[show followings followers]
   def show
     @techniques = @user.techniques.recent.paginate(params, 3)
     respond_to do |format|
       format.html
-      format.js {render 'layouts/shared/paginate'}
+      format.js { render 'layouts/shared/paginate' }
     end
   end
 
@@ -16,9 +16,9 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js {render 'layouts/shared/paginate'}
+      format.js { render 'layouts/shared/paginate' }
     end
-    
+
     @technique_ranks = Technique.create_technique_ranks
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @followings = @user.followings.paginate(params, 3)
     respond_to do |format|
       format.html
-      format.js {render :followings_paginate}
+      format.js { render :followings_paginate }
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @followers = @user.followers.paginate(params, 3)
     respond_to do |format|
       format.html
-      format.js {render :followers_paginate}
+      format.js { render :followers_paginate }
     end
   end
 

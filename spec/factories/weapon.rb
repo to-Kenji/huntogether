@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :weapon do
-    name { "WEAPON" }
+    name { 'WEAPON' }
   end
 end

@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
     @technique = Technique.find(params[:technique_id])
     current_user.favorite(@technique)
     respond_to do |format|
-      format.html {redirect_to @technique}
+      format.html { redirect_to @technique }
       format.js
     end
   end
@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
     @technique = Technique.find(params[:technique_id])
     current_user.unfavorite(@technique)
     respond_to do |format|
-      format.html {redirect_to @technique}
+      format.html { redirect_to @technique }
       format.js
     end
   end
