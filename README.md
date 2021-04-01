@@ -15,6 +15,7 @@
 - Docker
 - AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront, ALB)
 - RSpec(単体テスト、統合テスト)
+- RuboCop
 - Nginx
 - Puma
 - Capistrano
