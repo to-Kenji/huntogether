@@ -1,6 +1,6 @@
 class TechniquesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_technique, only: [:show, :edit, :update, :destroy]
+  before_action :set_technique, only: %i[show edit update destroy]
 
   def show
     @user = @technique.user
@@ -23,9 +23,8 @@ class TechniquesController < ApplicationController
     end
   end
 
-  def edit
-  end
-  
+  def edit; end
+
   def update
     if @technique.update(technique_params)
       flash[:notice] = '更新しました。'
@@ -51,5 +50,4 @@ class TechniquesController < ApplicationController
   def set_technique
     @technique = Technique.find(params[:id])
   end
-
 end

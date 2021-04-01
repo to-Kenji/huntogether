@@ -4,11 +4,9 @@
 # You can define all roles on a single server, or split them:
 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
-server "18.181.114.99", user: "kenji", roles: %w{app db web}
+server '18.181.114.99', user: 'kenji', roles: %w[app db web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
-
 
 # role-based syntax
 # ==================
@@ -22,8 +20,6 @@ server "18.181.114.99", user: "kenji", roles: %w{app db web}
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -31,8 +27,6 @@ server "18.181.114.99", user: "kenji", roles: %w{app db web}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
@@ -42,11 +36,11 @@ server "18.181.114.99", user: "kenji", roles: %w{app db web}
 #
 # Global options
 # --------------
- set :ssh_options, {
-   keys: %w(~/.ssh/huntogether.pem),
-   forward_agent: false,
-   auth_methods: %w(publickey)
- }
+set :ssh_options, {
+  keys: %w[~/.ssh/huntogether.pem],
+  forward_agent: false,
+  auth_methods: %w[publickey]
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------

@@ -7,11 +7,11 @@ RSpec.describe Technique, type: :model do
   let(:technique) {
     Technique.new(
       title: 'TITLE',
-      body: "BODY",
+      body: 'BODY',
       user_id: user.id,
       weapon_id: weapon.id,
       monster_id: monster.id,
-      youtube_url: "https://www.youtube.com/watch?v=-YG2pgoghVA",
+      youtube_url: 'https://www.youtube.com/watch?v=-YG2pgoghVA'
     )
   }
 
@@ -19,7 +19,7 @@ RSpec.describe Technique, type: :model do
     context 'when validation success' do
       it 'is valid' do
         expect(technique).to be_valid
-        expect{ technique.save }.to change{ Technique.count }.by(1)
+        expect { technique.save }.to change { Technique.count }.by(1)
       end
     end
 
@@ -66,21 +66,21 @@ RSpec.describe Technique, type: :model do
       end
 
       it 'is invalid with more than 44 characters of youtube_url' do
-        technique.youtube_url = "https://www.youtube.com/watch?v=-YG2pgoghVAa"
+        technique.youtube_url = 'https://www.youtube.com/watch?v=-YG2pgoghVAa'
         expect(technique).not_to be_valid
         expect(technique.errors[:youtube_url]).to include('は43文字以内で入力してください')
       end
-      
+
       it 'is invalid with youtube_url regex' do
-        technique.youtube_url = "aaa://www.youtube.com/watch?v=-YG2pgoghVA"
+        technique.youtube_url = 'aaa://www.youtube.com/watch?v=-YG2pgoghVA'
         expect(technique).not_to be_valid
         expect(technique.errors[:youtube_url]).to include('は不正な値です')
 
-        technique.youtube_url = "https://www.<>.com/watch?v=-YG2pgoghVA"
+        technique.youtube_url = 'https://www.<>.com/watch?v=-YG2pgoghVA'
         expect(technique).not_to be_valid
         expect(technique.errors[:youtube_url]).to include('は不正な値です')
 
-        technique.youtube_url = "https://www.youtube.comwatch?v=-YG2pgoghVA"
+        technique.youtube_url = 'https://www.youtube.comwatch?v=-YG2pgoghVA'
         expect(technique).not_to be_valid
         expect(technique.errors[:youtube_url]).to include('は不正な値です')
       end

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @technique = Technique.find(params[:technique_id])
     @comments = @technique.comments.recent
@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.save
     render :index
   end
-  
+
   def destroy
     @technique = Technique.find(params[:technique_id])
     @comments = @technique.comments.recent

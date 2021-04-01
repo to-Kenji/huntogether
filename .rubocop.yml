@@ -1,0 +1,111 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7
+  TargetRailsVersion: 6.0
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'
+    - 'spec/system/users_spec.rb'
+    - 'config/environments/development.rb'
+
+Rails/HasManyOrHasOneDependent:
+  Exclude:
+    - 'app/models/monster.rb'
+    - 'app/models/weapon.rb'
+
+Rails/InverseOf:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/models/technique_spec.rb'
+    - 'spec/models/user_spec.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/users/confirmations_controller.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/users/passwords_controller.rb'
+    - 'app/controllers/users/registrations_controller.rb'
+    - 'app/controllers/users/sessions_controller.rb'
+    - 'app/controllers/users/unlocks_controller.rb'
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/controllers/timeline_controller.rb'
+    - 'app/controllers/toppages_controller.rb'
+    - 'app/controllers/users_controller.rb'
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/devise.rb'
+    - 'spec/system/users_spec.rb'
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'app/controllers/timeline_controller.rb'
+    - 'app/controllers/toppages_controller.rb'
+    - 'app/controllers/users_controller.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/timeline_controller.rb'
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/ExpectChange:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/PredicateMatcher:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
+  Exclude:
+    - 'spec/system/techniques_spec.rb'
+    - 'spec/system/users_spec.rb'
+
+RSpec/NestedGroups:
+  Enabled: false

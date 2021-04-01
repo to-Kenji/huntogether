@@ -16,11 +16,10 @@ class User < ApplicationRecord
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
 
- 
   mount_uploader :image, ImageUploader
 
   include Paginate
-  
+
   def already_liked?(technique)
     self.likes.exists?(technique_id: technique.id)
   end
@@ -28,25 +27,25 @@ class User < ApplicationRecord
   def favorite(technique)
     self.bookmarks.find_or_create_by(technique_id: technique.id)
   end
-  
+
   def unfavorite(technique)
     bookmark = self.bookmarks.find_by(technique_id: technique.id)
-    bookmark.destroy if bookmark
+    bookmark&.destroy
   end
 
   def already_favorited?(technique)
     self.favorites.include?(technique)
   end
-  
+
   def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    return if self == other_user
+
+    self.relationships.find_or_create_by(follow_id: other_user.id)
   end
 
   def unfollow(other_user)
     relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    relationship&.destroy
   end
 
   def following?(other_user)
