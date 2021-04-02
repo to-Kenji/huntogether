@@ -29,6 +29,7 @@ jobs:
       - image: circleci/mariadb:10.5
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          SELENIUM_DRIVER_URL: 'http://selenium_chrome:4444/wd/hub'
 
     steps:
       - checkout
