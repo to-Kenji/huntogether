@@ -14,6 +14,7 @@
 - MariaDB 10.5.8
 - Docker
 - AWS(VPC, EC2, RDS, Route53, IAM, S3, CloudFront, ALB)
+- CircleCI(テスト、コード解析の自動化)
 - RSpec(単体テスト、統合テスト)
 - RuboCop
 - Nginx
