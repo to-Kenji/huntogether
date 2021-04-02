@@ -15,13 +15,15 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome
     env_file: development.env
     stdin_open: true
     tty: true
-    environment:
-      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
-  selenium_chrome:
+  chrome:
     image: selenium/standalone-chrome-debug
+    ports:
+      - 4444:4444
+
 volumes:
   dbvolume:
   gem_data:
