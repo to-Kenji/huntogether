@@ -22,13 +22,13 @@ jobs:
     parallelism: 3
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
-         environment:
-           BUNDLER_VERSION: 2.1.4
-           DB_HOST: 127.0.0.1
-           RAILS_ENV: test
+        environment:
+          BUNDLER_VERSION: 2.1.4
+          DB_HOST: 127.0.0.1
+          RAILS_ENV: test
       - image: circleci/mariadb:10.5
-         environment:
-           MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
     steps:
       - checkout
