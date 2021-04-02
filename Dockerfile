@@ -1,6 +1,6 @@
 FROM ruby:2.7.1
 RUN apt-get update -qq \
-    && apt-get install -y nodejs yarn \
+    && apt-get install -y nodejs yarn chromium-driver\
     && mkdir /huntogether
 WORKDIR /huntogether
 COPY Gemfile /huntogether/Gemfile

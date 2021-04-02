@@ -22,14 +22,15 @@ jobs:
     parallelism: 3
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
-         environment:
-           BUNDLER_VERSION: 2.1.4
-           DB_HOST: 127.0.0.1
-           RAILS_ENV: test
+        environment:
+          BUNDLER_VERSION: 2.1.4
+          DB_HOST: 127.0.0.1
+          RAILS_ENV: test
       - image: circleci/mariadb:10.5
-         environment:
-           MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-
+        environment:
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+      - image: selenium/standalone-chrome-debug
     steps:
       - checkout
       - ruby/install-deps
@@ -42,6 +43,7 @@ jobs:
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
+      - run: bundle exec rails db:seed
       # Run rspec in parallel
       - ruby/rspec-test
       - ruby/rubocop-check
