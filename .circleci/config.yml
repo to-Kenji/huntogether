@@ -28,7 +28,8 @@ jobs:
           RAILS_ENV: test
       - image: circleci/mariadb:10.5
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
       - image: selenium/standalone-chrome-debug
     steps:
       - checkout
