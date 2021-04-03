@@ -51,29 +51,30 @@ body {
 
 footer {
   width: 100%;
-  height: 130px;
+  height: 200px;
   background-color: #3e3e3e;
-  text-align: center;
   bottom: 0;
-  .copywright {
-    font-size: 14px;
-    padding-top: 5px;
-    color: #b3b3b3;
-  }
+  text-align: center;
   .footer-content {
     padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    .contact a {
+    .contact {
       color: #b3b3b3;
+      margin-bottom: 10px;
+      a {
+        color: #fff;
+      }
     }
-    .my-information a {
+    .company {
       color: #b3b3b3;
+      a {
+        color: #fff;
+      }
     }
   }
-  p {
-    margin-bottom: 0;
-    margin-top: 10px;
+  .copywright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #b3b3b3;
     .title-name {
       font-size: 20px;
       font-weight: bold;
@@ -87,9 +88,6 @@ footer {
   background-color: #f9f9f9;
   border-color: #dee2e6
 }
-.card .card-header {
-  background-color: #e3f2fd;
-}
 
 .button {
   display: inline-block;
@@ -97,7 +95,6 @@ footer {
   border: 2px solid;
   text-decoration: none;
   vertical-align: middle;
-  transition: 0.3s; 
 }
 
 .button:focus {
@@ -120,13 +117,13 @@ footer {
 
 .button-blue {
   color: #fff;
-  background: #0C88CA;
-  border-color: #0C88CA;
+  background: #1c26b1;
+  border-color: #1c26b1;
 }
 
 .button-blue:hover {
-  background: #195a85;
-  border-color: #195a85;
+  background: #18219c;
+  border-color: #18219c;
 }
 
 .button-red {
@@ -141,27 +138,28 @@ footer {
   color: #fff;
 }
 
-.button-outline-green {
-  color: #40C659;
-  background: #fff;
+.button-green {
+  color: #fff;
+  background: #28a745;
+  border-color: #28a745;
 }
 
-.button-outline-green:hover {
+.button-green:hover {
+  background: #1c9137;
+  border-color: #1c9137;
   color: #fff;
-  border-color: #40C659;
-  background: #40C659;
 }
 
 .button-outline-blue {
-  color: #0C88CA;
-  border-color: #0C88CA;
+  color: #1c26b1;
+  border-color: #1c26b1;
   background: #fff;
   border: 1px solid;
 }
 
 .button-outline-blue:hover {
-  background: #0C88CA;
-  border-color: #0C88CA;
+  background: #1c26b1;
+  border-color: #1c26b1;
   color: #fff;
 }
 
@@ -238,7 +236,7 @@ footer {
 }
 
 .navbar {
-  background-color: #e3f2fd;
+  background-color: #303030;
   ul {
     margin-left: auto;
     .new {

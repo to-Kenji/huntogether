@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-light">
+  <nav class="navbar navbar-expand-sm navbar-dark">
       <a class="navbar-brand" href="/">プロはん養成所</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item new">
-            <%= link_to '新規投稿', new_technique_path, class:'button button-md button-outline-green'%>
+            <%= link_to '新規投稿', new_technique_path, class:'button button-md button-green'%>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
