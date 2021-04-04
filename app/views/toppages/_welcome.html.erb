@@ -1,16 +1,18 @@
-<div class="center jumbotron text-white" style="background: url(<%= asset_path("jumbotron.jpeg")%>)">
-  <div class="row justify-content-around">
-    <div class="col-md-6">
-      <h3>Monster Hunter World: Iceborn</h3>
-      <p>「なかなかモンスターが倒せない・・・」</p>
-      <p>「マルチプレイで周囲に迷惑をかけてしまう・・・」</p>
-      <p>「上手いプレイヤーのテクニックを知りたい・・・」</p>
-      <br>
-      <strong>プロはん養成所は、そんなハンターを応援するため、"プレイスキルに特化"した攻略情報を共有しています。</strong>
-
-    </div>
-    <div class="col-md-4">
-      <%= render 'sign_up' %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container-fluid">
+    <div class="row justify-content-around text-center">
+      <div class="col-md-6 order-md-2 mb-4">
+        <h2>Monster Hunter World: Iceborn</h2>
+        <p>「なかなかモンスターが倒せない・・・」</p>
+        <p>「マルチプレイで周囲に迷惑をかけてしまう・・・」</p>
+        <p>「上手いプレイヤーのテクニックを知りたい・・・」</p>
+        <br>
+        <strong>プロはん養成所は、そんなハンターを応援するため、"プレイスキルに特化"した攻略情報を共有しています。</strong>
+      </div>
+      <div class="col-md-4 order-md-1 align-self-center">
+        <p>初めての方：<%= link_to 'ユーザー登録', new_user_registration_path(anchor: 'target'), class: 'button button-md button-blue' %></p>
+        <p>お試しの方：<%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button button-md button-green' %></p>
+      </div>
     </div>
   </div>
 </div>

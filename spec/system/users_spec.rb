@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :system do
   describe 'CREATE' do
     it 'is valid' do
-      visit root_path
+      visit new_user_registration_path
       fill_in 'ユーザー名', with: 'kenji'
       fill_in 'メールアドレス', with: 'kenji@example.com'
-      fill_in 'パスワード(6文字以上)', with: 'password'
+      fill_in 'パスワード', with: 'password'
       fill_in 'パスワード確認', with: 'password'
-      click_button 'ユーザー登録'
+      click_button '登録'
 
       expect(page).to have_content '登録完了！'
     end

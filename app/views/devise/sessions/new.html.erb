@@ -1,13 +1,13 @@
 <div class="card col-sm-6 offset-sm-3 mb-3">
-  <div class="card-title text-center mt-2">ログイン</div>
+  <div class="card-title text-center mt-2" id="target">ログイン</div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => 'メールアドレス', class: 'form-control' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, :placeholder => 'メールアドレス', class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.password_field :password, autocomplete: "current-password", :placeholder => 'パスワード', class: 'form-control' %>
+        <%= f.password_field :password, autocomplete: "current-password", required: true, :placeholder => 'パスワード', class: 'form-control' %>
       </div>
 
       <div class="actions">
@@ -16,7 +16,7 @@
     <% end %>
     
     <div class="guest-login-button text-center mb-2">
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button button-md button-outline-green' %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'button button-md button-green' %>
     </div>
     <%= render "devise/shared/links" %>
     <%= link_to 'トップへ戻る', root_path %>

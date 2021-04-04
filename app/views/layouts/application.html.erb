@@ -14,6 +14,9 @@
   <body>
     <div class="gray">
       <%= render 'layouts/shared/navbar' %>
+      <% unless user_signed_in? %>
+        <%= render 'toppages/welcome' %>
+      <% end %>
       <div class="container content-main mt-4">
         <%= render 'layouts/shared/flash_messages' %>
         <%= yield %>
