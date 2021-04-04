@@ -2,6 +2,7 @@
   <div class="card-title text-center mt-2" id="target">ログイン</div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, :placeholder => 'メールアドレス', class: 'form-control' %>
       </div>
@@ -22,4 +23,3 @@
     <%= link_to 'トップへ戻る', root_path %>
   </div>
 </div>
-

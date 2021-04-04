@@ -1,9 +1,9 @@
 module DeviseHelper
   def bootstrap_alert(key)
     lists = {
-      'alert' => 'warning',
-      'notice' => 'success',
-      'error' => 'danger'
+      'notice' => 'info',
+      'error' => 'danger',
+      'alert' => 'danger'
     }
     lists[key]
   end
