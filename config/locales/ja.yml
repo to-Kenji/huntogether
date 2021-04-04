@@ -4,6 +4,10 @@ ja:
       technique:
         title: タイトル
         body: 本文
+        monster: モンスター
+        weapon: 使用武器
+      user:
+        name: ユーザー名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
