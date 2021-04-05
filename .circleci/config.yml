@@ -47,12 +47,28 @@ jobs:
       # Run rspec in parallel
       - ruby/rspec-test
       - ruby/rubocop-check
+  deploy:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+    environment:
+      BUNDLER_VERSION: 2.1.4 
+    steps:
+      - checkout
+      - ruby/install-deps
+      - add_ssh_keys:
+          fingerprints: "ee:d3:49:87:1d:ba:4c:c3:1a:6d:79:4b:c9:c6:fb:92"
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_test_then_deploy:
     jobs:
       - build
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test
