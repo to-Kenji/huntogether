@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.0
   node: circleci/node@2
+  aws-cli: circleci/aws-cli@2.0.0
 
 jobs:
   build:
@@ -50,12 +51,12 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
-      - image: cibuilds/aws
     environment:
       BUNDLER_VERSION: 2.1.4 
     steps:
       - checkout
       - ruby/install-deps
+      - aws-cli/setup
       - add_ssh_keys:
           fingerprints: "ee:d3:49:87:1d:ba:4c:c3:1a:6d:79:4b:c9:c6:fb:92"
       - run:
