@@ -55,11 +55,13 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - run: sudo pip install awscli
       - add_ssh_keys:
           fingerprints: "ee:d3:49:87:1d:ba:4c:c3:1a:6d:79:4b:c9:c6:fb:92"
-      - deploy:
-          name: Capistrano deploy
-          command: bundle exec cap production deploy
+      - run:
+          name: deploy
+          command: |
+            ./deploy.sh
 
 workflows:
   version: 2
@@ -72,3 +74,6 @@ workflows:
       - deploy:
           requires:
             - test
+          filters:
+            branches:
+              only: main
