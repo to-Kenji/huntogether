@@ -37,7 +37,7 @@ server '18.181.114.99', user: 'kenji', roles: %w[app db web]
 # Global options
 # --------------
 set :ssh_options, {
-  keys: %w['PRODUCTION_SSH_KEY'],
+  keys: [ENV.fetch('PRODUCTION_SSH_KEY').to_s],
   forward_agent: true,
   auth_methods: %w[publickey]
 }
