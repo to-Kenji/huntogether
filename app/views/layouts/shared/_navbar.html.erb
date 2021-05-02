@@ -1,36 +1,39 @@
-<header>
-  <nav class="navbar navbar-expand-sm navbar-dark">
-      <a class="navbar-brand" href="/">プロはん養成所</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li class="nav-item new">
-            <%= link_to '新規投稿', new_technique_path, class:'button button-md button-green'%>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <% if current_user.image? %>
-                <%= image_tag current_user.image.url, class: 'avatar avatar-md' %>
-              <% else %>
-                <%= image_tag asset_path("default.png"), class: 'avatar avatar-md' %>
-              <% end %>
+<nav class="navbar navbar-expand-md navbar-light">
+  <a class="navbar-brand" href="/">
+    <%= image_tag asset_path("logo.png"), class: 'navbar-logo' %>
+    プロはん養成所
+    <i class="fas fa-school fa-xs"></i>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %> 
+        <li class="nav-item new">
+          <%= link_to new_technique_path, class:'button button-md button-green' do %>
+            新規投稿 <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <% if current_user.image? %>
+              <%= image_tag current_user.image.url, class: 'avatar avatar-md' %>
+            <% else %>
+              <%= image_tag asset_path("default.png"), class: 'avatar avatar-md' %>
+            <% end %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="<%= user_path(current_user)%>" class="dropdown-item mypage">マイページ</a>
+            <div class="dropdown-divider"></div>
+            <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item logout">ログアウト <i class="fas fa-sign-out-alt"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= user_path(current_user)%>" class="dropdown-item mypage">マイページ</a>
-              <div class="dropdown-divider"></div>
-              <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item logout">ログアウト <i class="fas fa-sign-out-alt"></i>
-              </a>
-            </div>
-          </li>         
-        <% else %>
-          <li class="nav-item"><%= link_to 'ユーザー登録', new_user_registration_path(anchor: 'target'), class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path(anchor: 'target'), class: 'nav-link' %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</header>
+          </div>
+        </li>         
+      <% else %>
+        <li class="nav-item"><%= link_to 'ユーザー登録', new_user_registration_path(anchor: 'target'), class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path(anchor: 'target'), class: 'nav-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
