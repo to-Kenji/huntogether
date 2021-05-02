@@ -6,27 +6,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="gray">
-      <%= render 'layouts/shared/navbar' %>
-      <% unless user_signed_in? %>
+    <div class="content-wrapper">
+      <%= render 'layouts/shared/flash_messages' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/shared/navbar' %>
+      <% else %>
         <%= render 'toppages/welcome' %>
       <% end %>
       <div class="container content-main mt-4">
-        <%= render 'layouts/shared/flash_messages' %>
         <%= yield %>
         <div id="page-top">
           <a href=""><i class="fas fa-angle-double-up"></i></a>
         </div>
       </div>
+      <footer>
+        <%= render 'layouts/shared/footer'%>
+      </footer>
     </div>
-    <footer>
-      <%= render 'layouts/shared/footer'%>
-    </footer>
   </body>
 </html>

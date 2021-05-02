@@ -1,20 +1,20 @@
 <div class="card text-center mb-2">
-  <div class="card-header">
+  <div class="card-title">
     <i class="fas fa-search"></i>
     <strong class="mt-2"><%= content %>内で絞り込み</strong>
   </div>
   <div class="card-body">
-    <div class="search-form p-1">
+    <div class="search-form">
       <%= search_form_for(@q, url:url) do |f| %>
-        <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし(武器)' %><br/>
+        <%= f.collection_select :weapon_id_eq, Weapon.all, :id, :name, :include_blank => '指定なし(武器)' %>
 
         <%= f.collection_select :monster_id_eq, Monster.all, :id, :name, :include_blank => '指定なし(モンスター)' %><br/>
 
-        <div class="form-group mt-2">
-          <%= f.search_field :title_or_user_name_cont, :placeholder => 'タイトル、投稿者のキーワード', class: 'form-control form-control-sm' %>
-        </div>
-
-        <%= f.submit '絞り込む', class: 'button button-md button-blue btn-block' %>
+        <%= f.search_field :title_or_user_name_cont, :placeholder => 'タイトル、投稿者のキーワード', class: 'form-control form-control-sm mb-2' %>
+      
+        <%= f.button :type => "submit", class: 'icon-circle search-circle' do  %>
+          <i class="fas fa-search"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
