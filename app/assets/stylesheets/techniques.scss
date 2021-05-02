@@ -9,17 +9,29 @@
 
 .main { //techniques#show
   margin-bottom: 15px;
+  .technique-body {
+    font-size: 1.2rem;
+  }
   .technique-info {
     display: flex;
     justify-content: space-around;
     .like {
-      text-align:center;
+      align-items: center;
+      display: flex;
+      .badge {
+        margin-left: 8px;
+      }
     }
     .bookmark {
-      text-align: center;
+      align-items: center;
+      display: flex;
+      .badge {
+        margin-left: 4px;
+      }
     }
   }
 }
+
 
 .tags {
   margin-bottom: 15px;
