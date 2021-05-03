@@ -2,6 +2,11 @@
   <div class="technique-title">
     <h4><%= @technique.title %></h4>
   </div>
+  <div class="tag-list">
+    <% @technique.tags.each do |tag| %>
+      <%= link_to tag.tag_name, tagged_techniques_path(tag_id: tag.id), class: 'tag-button' %>
+    <% end %>
+  </div>
   <div class="created-time">
     投稿日：<%=@technique.created_at.strftime('%Y/%m/%d') %>
   </div>

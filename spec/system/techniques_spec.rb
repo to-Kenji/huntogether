@@ -15,6 +15,7 @@ RSpec.describe 'Techniques', type: :system do
       expect(page).to have_current_path new_technique_path, ignore_query: true
 
       fill_in 'technique_title', with: 'This is the title'
+      fill_in '半角スペース区切りでタグを入力(上級者 タイムアタック 小技)', with: 'tag1 tag2 tag3'
       select 'アルバトリオン', from: '対象モンスター：'
       select '片手剣', from: '使用武器：'
       fill_in 'technique_body', with: 'This is the body'
@@ -22,12 +23,16 @@ RSpec.describe 'Techniques', type: :system do
 
       click_button '投稿'
       expect(page).to have_content 'This is the title'
+      expect(page).to have_content 'tag1'
+      expect(page).to have_content 'tag2'
+      expect(page).to have_content 'tag3'
       expect(page).to have_content 'This is the body'
       expect(page).to have_content 'アルバトリオン'
       expect(page).to have_content '片手剣'
 
       click_on 'technique-edit-icon'
       fill_in 'technique_title', with: 'Changed the title'
+      fill_in '半角スペース区切りでタグを入力(上級者 タイムアタック 小技)', with: 'tag4 tag5 tag6'
       select 'ミラボレアス', from: '対象モンスター：'
       select '大剣', from: '使用武器：'
       fill_in 'technique_body', with: 'Changed the body'
@@ -35,6 +40,9 @@ RSpec.describe 'Techniques', type: :system do
 
       click_button 'この内容で保存'
       expect(page).to have_content 'Changed the title'
+      expect(page).to have_content 'tag4'
+      expect(page).to have_content 'tag5'
+      expect(page).to have_content 'tag6'
       expect(page).to have_content 'Changed the body'
       expect(page).to have_content 'ミラボレアス'
       expect(page).to have_content '大剣'
