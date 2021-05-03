@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy]
   end
 
+  get 'techniques' => 'techniques#tagged_index', as: 'tagged_techniques'
   resources :bookmarks, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
   post 'like/:id' => 'likes#create', as: 'create_like'

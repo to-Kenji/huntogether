@@ -13,6 +13,10 @@
         </div>
 
         <div class="form-group">
+          <%= f.text_field :tag_name, value: @tag_list, :placeholder => '半角スペース区切りでタグを入力(上級者 タイムアタック 小技)', class: 'form-control form-control-sm', required: true %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :monster_id, '対象モンスター：' %>
           <%= f.collection_select :monster_id, Monster.all, :id, :name, :prompt => true, class: 'form-control' %>
         </div>

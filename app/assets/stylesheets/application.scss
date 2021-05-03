@@ -336,6 +336,11 @@ footer {
 .table {
   .techniques-header {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .title-timestamp {
+    display: flex;
     flex-wrap: wrap;
     margin-bottom: 4px;
     .created_at {
@@ -401,7 +406,7 @@ footer {
 
 .adv-card {
   margin-bottom: 15px;
-  height: 250px;
+  height: 300px;
 }
 
 .card-title {

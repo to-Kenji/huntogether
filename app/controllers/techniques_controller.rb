@@ -14,7 +14,9 @@ class TechniquesController < ApplicationController
 
   def create
     @technique = current_user.techniques.build(technique_params)
+    tag_list = params[:technique][:tag_name].split(nil)
     if @technique.save
+      @technique.save_tags(tag_list)
       flash[:notice] = '投稿しました。'
       redirect_to @technique
     else
@@ -23,10 +25,14 @@ class TechniquesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @tag_list = @technique.tags.pluck(:tag_name).join(' ')
+  end
 
   def update
+    tag_list = params[:technique][:tag_name].split(nil)
     if @technique.update(technique_params)
+      @technique.save_tags(tag_list)
       flash[:notice] = '更新しました。'
       redirect_to @technique
     else
@@ -39,6 +45,16 @@ class TechniquesController < ApplicationController
     @technique.destroy
     flash[:notice] = '投稿を削除しました。'
     redirect_to root_path
+  end
+
+  def tagged_index
+    @tags = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @techniques = @tag.techniques.recent.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js { render 'layouts/shared/paginate' }
+    end
   end
 
   private

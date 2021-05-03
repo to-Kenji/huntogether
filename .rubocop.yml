@@ -76,9 +76,14 @@ Lint/AssignmentInCondition:
 Metrics/AbcSize:
   Exclude:
     - 'app/controllers/timeline_controller.rb'
+    - 'app/controllers/techniques_controller.rb'
 
 Metrics/BlockLength:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/models/technique.rb'
 
 RSpec/DescribedClass:
   Enabled: false

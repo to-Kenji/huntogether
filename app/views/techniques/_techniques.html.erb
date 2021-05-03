@@ -8,22 +8,44 @@
       <tr>
         <td>
           <div class="techniques-header">
-            <% unless controller.controller_name == 'users' && controller.action_name == 'show' %>
-              <div class="avatarLink">
-                <%= link_to user_path(technique.user) do %>
-                  <% if technique.user.image? %>
-                    <%= image_tag technique.user.image.url, class: 'avatar avatar-sm' %>
-                  <% else %>
-                    <%= image_tag asset_path("default.png"), class: 'avatar avatar-sm' %>
+            <div class="title-timestamp">
+              <% unless controller.controller_name == 'users' && controller.action_name == 'show' %>
+                <div class="avatarLink">
+                  <%= link_to user_path(technique.user) do %>
+                    <% if technique.user.image? %>
+                      <%= image_tag technique.user.image.url, class: 'avatar avatar-sm' %>
+                    <% else %>
+                      <%= image_tag asset_path("default.png"), class: 'avatar avatar-sm' %>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <%= link_to user_path(technique.user) do %>
-                  <%= technique.user.name %>
-                <% end %>
+                  <%= link_to user_path(technique.user) do %>
+                    <%= technique.user.name %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="created_at">
+                <%= technique.created_at.strftime('%Y年%m月%d日') %>
               </div>
-            <% end %>
-            <div class="created_at">
-              <%= technique.created_at.strftime('%Y年%m月%d日') %>
+            </div>
+            <div class="reputation">
+              <div class="like-count">
+                <i class="fa fa-heart"></i>
+                <%= technique.likes.count %>
+              </div>
+              <div class="bookmark-count">
+                <i class="fas fa-bookmark"></i>
+                <%= technique.favors.count %>
+              </div>
+              <% if technique.comments.exists? %>
+                <div class="comment-count">
+                  <%= link_to technique_path(technique, anchor: 'comment-area') do %>
+                    <i class="fas fa-comments"></i>
+                  <% end %>
+                  <%= link_to technique_path(technique, anchor: 'comment-area') do %>
+                    <%= technique.comments.count %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
           <div class="techniques-body">
@@ -35,6 +57,13 @@
               <% end %>
               <%= link_to technique_path(technique) do %>
                 <%= technique.title %>
+              <% end %>
+            </div>
+            <div class="tags-list">
+              <% technique.tags.each do |tag| %>
+                <%= link_to tagged_techniques_path(tag_id: tag.id), class: 'tag-button tag-button-small' do %>
+                  <%= tag.tag_name %>
+                <% end %>
               <% end %>
             </div>
             <div class="details">
@@ -49,26 +78,6 @@
                 </span>
               </div>
             </div>
-          </div>
-          <div class="reputation">
-            <div class="like-count">
-              <i class="fa fa-heart"></i>
-              <%= technique.likes.count %>
-            </div>
-            <div class="bookmark-count">
-              <i class="fas fa-bookmark"></i>
-              <%= technique.favors.count %>
-            </div>
-            <% if technique.comments.exists? %>
-              <div class="comment-count">
-                <%= link_to technique_path(technique, anchor: 'comment-area') do %>
-                  <i class="fas fa-comments"></i>
-                <% end %>
-                <%= link_to technique_path(technique, anchor: 'comment-area') do %>
-                  <%= technique.comments.count %>
-                <% end %>
-              </div>
-            <% end %>
           </div>
         </td>
       </tr>

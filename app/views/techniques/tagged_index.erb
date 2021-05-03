@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h5>"<%= @tag.tag_name %>"に関連する記事一覧</h5>
+      <div id="technique-list">
+        <%= render 'techniques/techniques', techniques: @techniques %>
+      </div>
+      <div class="more-list">
+        <%= link_to_next_page @techniques, icon('fas', 'plus-circle'), remote: true, class: 'paginate-button', id: 'paginate' %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card text-center tag-card">
+        <div class="card-title"><h5>その他のタグ</h5></div>
+        <div class="card-body">
+          <div class="tag-list">
+            <% @tags.each do |tag| %>
+              <%= link_to tagged_techniques_path(tag_id: tag.id), class: 'tag-button' do %>
+                #<%= tag.tag_name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="adv-card">
+        <%= render 'layouts/shared/adv_card' %>
+      </div>
+    </div>
+  </div>
+</div>
