@@ -1,41 +1,43 @@
 <div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <div class="image">
-        <% if @user.image? %>
-          <%= image_tag @user.image.url, class: 'avatar' %>
-        <% else %>
-          <%= image_tag asset_path("default.png"), class: 'avatar default-avatar' %>
-        <% end %>
-      </div>
-      <h4><%= @user.name %></h4>
-      <div class="message">
-        <% if @user.id != current_user.id && @user.following?(current_user) %>
-          <span class="badge badge-secondary">フォローされています</span>
-        <% end %>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="user-profile">
-        <%= simple_format(@user.profile) %>
-      </div>
-      <% if @user.id == current_user.id %>
-        <div class="current-user-buttons">
-          <div class="edit-button">
-            <%= link_to icon('fas', 'pencil-alt'), edit_user_registration_path(id: current_user.id), class:'button-icon button-icon-edit' %>
-          </div>
-          <div class="logout-button">
-            <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete, class: 'button-icon button-icon-logout', id: 'logout-icon-link' %>
-          </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="image">
+          <% if @user.image? %>
+            <%= image_tag @user.image.url, class: 'avatar' %>
+          <% else %>
+            <%= image_tag asset_path("default.png"), class: 'avatar default-avatar' %>
+          <% end %>
         </div>
-      <% else %>
-        <%= render 'relationships/follow_button', user: @user %>
-      <% end %>
-    </li>
-    <li class="list-group-item">
-      <div id="relationship">
-        <%= render 'relationships/count', user: @user %>
-      </div>
-    </li>
-  </ul>
+        <h4><%= @user.name %></h4>
+        <div class="message">
+          <% if @user.id != current_user.id && @user.following?(current_user) %>
+            <span class="badge badge-secondary">フォローされています</span>
+          <% end %>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="user-profile">
+          <%= simple_format(@user.profile) %>
+        </div>
+        <% if @user.id == current_user.id %>
+          <div class="current-user-buttons">
+            <div class="edit-button">
+              <%= link_to icon('fas', 'pencil-alt'), edit_user_registration_path(id: current_user.id), class:'button-icon button-icon-edit' %>
+            </div>
+            <div class="logout-button">
+              <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete, class: 'button-icon button-icon-logout', id: 'logout-icon-link' %>
+            </div>
+          </div>
+        <% else %>
+          <%= render 'relationships/follow_button', user: @user %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <div id="relationship">
+          <%= render 'relationships/count', user: @user %>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
