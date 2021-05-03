@@ -3,6 +3,7 @@
   .card {
     text-align: center;
     margin-bottom: 15px;
+    border-radius: 25px !important;
     ul {
       li h4 {
         padding: 10px;
@@ -10,7 +11,7 @@
       li .current-user-buttons {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 5px;
+        margin: 10px 0px;
       }
       li #relationship {
         display: flex;
